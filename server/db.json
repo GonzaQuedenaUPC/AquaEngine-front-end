@@ -1,1 +1,94 @@
-{}
+{
+  "profiles": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "johndoe@gmail.com",
+      "ruc": "123456789"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": 100,
+      "urlToImage": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "price": 200,
+      "urlToImage": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "price": 300,
+      "urlToImage": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "price": 400,
+      "urlToImage": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 5,
+      "name": "Product 5",
+      "price": 500,
+      "stock": 10,
+      "urlToImage": "https://via.placeholder.com/150"
+    }
+  ],
+  "companies": [
+    {
+      "id": 1,
+      "name": "Company 1",
+      "urlToImage": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "name": "Company 2",
+      "urlToImage": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 3,
+      "name": "Company 3",
+      "urlToImage": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 4,
+      "name": "Company 4",
+      "urlToImage": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 5,
+      "name": "Company 5",
+      "urlToImage": "https://via.placeholder.com/150"
+    }
+  ],
+  "invoices": [
+    {
+      "id": 1,
+      "amount": 100,
+      "date": "20-09-2024",
+      "profileId": 1
+    }
+  ],
+  "monitoring": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "urlToImage": "https://via.placeholder.com/150",
+      "lastMaintenance": "20-09-2024",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "urlToImage": "https://via.placeholder.com/150",
+      "lastMaintenance": "04-08-2024",
+      "status": "disabled"
+    }
+  ]
+}

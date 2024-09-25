@@ -39,18 +39,21 @@ import Toolbar from "primevue/toolbar";
 import Toast from "primevue/toast";
 // import router from "./router/index.js";
 import SelectButton from "primevue/selectbutton";
+import Chart from "primevue/chart";
 
 // Create app instance
 
 const app = createApp(App);
 
 // Use i18n
+import i18n from "./i18n.js";
 
+app.use(i18n);
 
 
 // Use Router
-
-// app.use(router);
+import router from "./router/index.js";
+app.use(router);
 
 // Use PrimeVue
 
@@ -83,7 +86,9 @@ app.component('pv-button', Button)
     .component('pv-tag', Tag)
     .component('pv-textarea', Textarea)
     .component('pv-toolbar', Toolbar)
-    .component('pv-toast', Toast);
+    .component('pv-toast', Toast)
+
+    .component('pv-chart',Chart);
 
 // Mount app
 app.mount('#app');
