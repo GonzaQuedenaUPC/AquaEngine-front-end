@@ -1,5 +1,5 @@
 <script>
-import toolbarContent from './public/pages/toolbar.component.vue';
+import toolbarContent from './public/components/toolbar.component.vue';
 
 export default {
 
