@@ -1,6 +1,6 @@
-import en from '../../../L/DotVue/learning-center/src/locales/en.json';
-import es from '../../../L/DotVue/learning-center/src/locales/es.json';
-import {createI18n} from "vue-i18n";
+import en from '../src/locales/en.json';
+import es from '../src/locales/es.json';
+import { createI18n } from "vue-i18n";
 
 const i18n = createI18n({
     legacy: false,
