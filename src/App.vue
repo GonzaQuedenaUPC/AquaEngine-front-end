@@ -9,14 +9,27 @@ export default {
 
   data() {
     return {
-      user: {},
+      profile: {},
+      inventory: []
     }
   },
 
   methods: {
     onProfileLoaded(value) {
-      this.user = value;
-      console.log(this.user);
+      this.profile = value;
+      this.inventory = value.inventory || [];
+
+      localStorage.setItem('profile', JSON.stringify(this.profile));
+    },
+  },
+
+  mounted() {
+
+    const savedUser = localStorage.getItem('profile');
+
+    if (savedUser) {
+      this.profile = JSON.parse(savedUser);
+      this.inventory = this.profile.inventory || [];
     }
   }
 }
@@ -26,11 +39,11 @@ export default {
 <template>
   <div class="app__container">
     <header class="header">
-      <toolbar-content :user="this.user"/>
+      <toolbar-content :profile="this.profile"/>
     </header>
 
     <main class="main">
-      <router-view @profile-selected="onProfileLoaded"/>
+      <router-view @profile-selected="onProfileLoaded" @profile-loaded="onProfileLoaded" :inventory="this.inventory"/>
     </main>
   </div>
 </template>

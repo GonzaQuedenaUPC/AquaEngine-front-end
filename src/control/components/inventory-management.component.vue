@@ -1,13 +1,37 @@
 <script>
 export default {
-  name: "inventory-management"
+  name: "inventory-management",
+
+  props: {
+    inventory: {
+      type: Array,
+      required: true
+    }
+  },
 }
 </script>
 
 <template>
+  <pv-data-table :value="this.inventory" paginator :rows="5" tableStyle="min-width: 50rem" class="inventory__table">
+    <pv-column field="productId" header="ID" class="inventory__item"></pv-column>
+    <pv-column field="name" header="Name" class="inventory__item"></pv-column>
+    <pv-column field="stock" header="Stock" class="inventory__item"></pv-column>
 
+    <pv-column field="representative.name" header="" style="width: 25%">
+      <!---slotProps: obtiene el valor de cada columna con slotProps.data-->
+      <template #body="slotProps">
+        <pv-button label="View" severity="success"/>
+      </template>
+    </pv-column>
+  </pv-data-table>
 </template>
 
 <style scoped>
+
+.inventory__table {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 
 </style>

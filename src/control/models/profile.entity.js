@@ -1,7 +1,7 @@
 class Profile {
 
     constructor({id='', name='', email='',
-                    ruc='', inventory=''}) {
+                    ruc='', inventory=[]}) {
         this._id = id;
         this._name = name;
         this._email = email;

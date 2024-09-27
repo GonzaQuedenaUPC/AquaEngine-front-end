@@ -3,7 +3,7 @@ export default {
   name: "toolbar-content",
 
   props: {
-    user: {
+    profile: {
       type: {},
       required: true
     }
@@ -28,7 +28,7 @@ export default {
           <li class="dropdown__list dropdown__user--main">
             <a href="#" class="dropdown__link">
               <img src="../../assets/images/user.svg" class="nav__icon" alt="user-icon"/>
-              <span class="dropdown__span dropdown__span--user">{{ user.name }}</span>
+              <span class="dropdown__span dropdown__span--user">{{ profile.name || profile._name }}</span>
             </a>
           </li>
         </ul>
@@ -44,7 +44,7 @@ export default {
           <li class="dropdown__list dropdown__user--menu">
             <a href="#" class="dropdown__link">
               <img src="../../assets/images/user.svg" class="nav__icon nav__icon--user" alt="user-icon"/>
-              <span class="dropdown__span dropdown__span--user">{{ user.name }}</span>
+              <span class="dropdown__span dropdown__span--user">{{ profile.name || profile._name }}</span>
             </a>
           </li>
 

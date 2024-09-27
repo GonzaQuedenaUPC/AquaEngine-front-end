@@ -1,7 +1,6 @@
 <script>
 import InventoryManagementComponent from "../components/inventory-management.component.vue";
 
-
 export default {
   name: "inventory-view",
 
@@ -9,10 +8,33 @@ export default {
     InventoryManagementComponent
   },
 
+  props: {
+    inventory: {
+      type: Array,
+      required: true
+    }
+  },
+
   data() {
     return {
-      inventory: [],
+      localInventory: [],
     }
+  },
+
+  methods: {
+    _emitProfileLoaded(profileSaved) {
+      this.$emit('profile-loaded', profileSaved);
+    }
+  },
+
+  created() {
+    this.localInventory = [...this.inventory];
+
+    const profileSaved = JSON.parse(localStorage.getItem("profile"));
+
+    this.localInventory = profileSaved._inventory || [];
+
+    this._emitProfileLoaded(profileSaved);
   }
 }
 </script>
@@ -23,7 +45,7 @@ export default {
       <div class="inventory">
         <h1 class="inventory__title">Inventory</h1>
         <p class="inventory__info">Track the fluctuation of your products</p>
-        <inventory-management-component/>
+        <inventory-management-component :inventory="this.localInventory"/>
       </div>
     </div>
   </div>
@@ -32,7 +54,8 @@ export default {
 <style scoped>
 
 .inventory__info {
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 25px;
 }
 
 </style>
