@@ -15,7 +15,6 @@ export default {
     <header class="header">
       <toolbar-content :user="{ username: 'Gonzalo' }"/>
     </header>
-
     <main class="main">
       <router-view/>
     </main>
