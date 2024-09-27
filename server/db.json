@@ -48,6 +48,34 @@
           "price": 500,
           "stock": 10,
           "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod3",
+          "name": "Product 3",
+          "price": 600,
+          "stock": 60,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod4",
+          "name": "Product 4",
+          "price": 700,
+          "stock": 70,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod5",
+          "name": "Product 5",
+          "price": 800,
+          "stock": 80,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod6",
+          "name": "Product 6",
+          "price": 900,
+          "stock": 90,
+          "urlToImage": "https://via.placeholder.com/150"
         }
       ]
     }
