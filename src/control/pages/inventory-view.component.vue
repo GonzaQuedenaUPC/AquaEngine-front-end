@@ -1,12 +1,39 @@
 <script>
 import InventoryManagementComponent from "../components/inventory-management.component.vue";
+import { ProfileService } from "../services/profile.service.js";
+import Profile from "../models/profile.entity.js";
 
 export default {
   name: "inventory-view",
 
   components: {
     InventoryManagementComponent
+  },
+
+  data() {
+    return {
+      profiles: [],
+      profileService: null,
+      profile: new Profile({}),
+    }
+  },
+
+  //#region Lifecycle Hooks
+
+  created() {
+    this.profileService = new ProfileService();
+
+    this.profileService.getAll()
+        .then(response => {
+          this.profiles = response.data.map(profile => new Profile(profile));
+          console.log(this.profiles);
+        })
+        .catch(error => {
+          console.error(error);
+        });
   }
+
+  //#endregion
 }
 </script>
 
