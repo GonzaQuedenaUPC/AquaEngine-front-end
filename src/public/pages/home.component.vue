@@ -63,7 +63,7 @@ export default {
 
 .home {
   width: 90%;
-  min-height: 100vh;
+  height: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
