@@ -8,6 +8,26 @@ class Profile {
         this._ruc = ruc;
         this._inventory = inventory;
     }
+
+    get id() {
+        return this._id;
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    get email() {
+        return this._email;
+    }
+
+    get ruc() {
+        return this._ruc;
+    }
+
+    get inventory() {
+        return this._inventory;
+    }
 }
 
 export default Profile;
