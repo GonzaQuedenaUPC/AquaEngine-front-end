@@ -13,9 +13,9 @@ export default {
 
 <template>
   <pv-data-table :value="this.inventory" paginator :rows="5" tableStyle="min-width: 50rem" class="inventory__table">
-    <pv-column field="productId" header="ID" class="inventory__item"></pv-column>
-    <pv-column field="name" header="Name" class="inventory__item"></pv-column>
-    <pv-column field="stock" header="Stock" class="inventory__item"></pv-column>
+    <pv-column field="productId" header="ID" style="width: 25%"></pv-column>
+    <pv-column field="name" header="Name" style="width: 25%"></pv-column>
+    <pv-column field="stock" header="Stock" style="width: 25%"></pv-column>
 
     <pv-column field="representative.name" header="" style="width: 25%">
       <!---slotProps: obtiene el valor de cada columna con slotProps.data-->
@@ -27,11 +27,5 @@ export default {
 </template>
 
 <style scoped>
-
-.inventory__table {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
 
 </style>
