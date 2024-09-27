@@ -33,6 +33,8 @@ export default {
           .then(response => {
             this.profile = this._buildProfileFromResponse(response.data);
             this.emitProfileSelected(this.profile);
+
+            localStorage.setItem('profile', JSON.stringify(this.profile));
           })
           .catch(error => {
             console.error(error);
@@ -46,7 +48,7 @@ export default {
   //#region Lifecycle Hooks
   created() {
     this.profileService = new ProfileService();
-    this._getProfileById(1);
+    this._getProfileById(2);
   }
   //#endregion
 }
