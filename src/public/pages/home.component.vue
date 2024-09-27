@@ -1,6 +1,54 @@
 <script>
+import { ProfileService } from "../../control/services/profile.service.js";
+import Profile from "../../control/models/profile.entity.js";
+
 export default {
-  name: "home-view"
+  name: "home-view",
+
+  data() {
+    return {
+      profileService: null,
+      profile: new Profile({}),
+    }
+  },
+
+  //#region Methods
+  methods: {
+    emitProfileSelected(profile) {
+      this.$emit('profile-selected', profile);
+    },
+
+    _buildProfileFromResponse(response) {
+      return new Profile({
+        id: response.id,
+        name: response.name,
+        email: response.email,
+        ruc: response.ruc,
+        inventory: response.inventory
+      });
+    },
+
+    _getProfileById(id) {
+      this.profileService.getById(id)
+          .then(response => {
+            this.profile = this._buildProfileFromResponse(response.data);
+            this.emitProfileSelected(this.profile);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+    },
+
+
+  },
+  //#endregion
+
+  //#region Lifecycle Hooks
+  created() {
+    this.profileService = new ProfileService();
+    this._getProfileById(1);
+  }
+  //#endregion
 }
 </script>
 
