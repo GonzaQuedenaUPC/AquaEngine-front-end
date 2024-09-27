@@ -11,7 +11,7 @@ export default {
       <h2 class="home__title">Select your service</h2>
 
       <div class="features">
-        <a href="#">
+        <router-link to="#">
           <pv-card class="feature__item">
             <template #content>
               <div class="feature__content">
@@ -20,9 +20,9 @@ export default {
               </div>
             </template>
           </pv-card>
-        </a>
+        </router-link>
 
-        <a href="#">
+        <router-link to="#">
           <pv-card class="feature__item">
             <template #content>
               <div class="feature__content">
@@ -31,9 +31,9 @@ export default {
               </div>
             </template>
           </pv-card>
-        </a>
+        </router-link>
 
-        <a href="#">
+        <router-link to="#">
           <pv-card class="feature__item">
             <template #content>
               <div class="feature__content">
@@ -42,9 +42,9 @@ export default {
               </div>
             </template>
           </pv-card>
-        </a>
+        </router-link>
 
-        <a href="#">
+        <router-link to="#">
           <pv-card class="feature__item">
             <template #content>
               <div class="feature__content">
@@ -53,7 +53,7 @@ export default {
               </div>
             </template>
           </pv-card>
-        </a>
+        </router-link>
       </div>
     </div>
   </main>
