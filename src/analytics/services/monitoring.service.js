@@ -1,6 +1,7 @@
 import http from '../../shared/http-common.js';
 
 export class MonitoringService {
+
     _resourceEndpoint = '/monitoring';
 
     getAll(){
