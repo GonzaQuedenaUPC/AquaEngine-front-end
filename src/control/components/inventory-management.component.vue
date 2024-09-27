@@ -28,4 +28,9 @@ export default {
 
 <style scoped>
 
+.inventory__table {
+  position: relative;
+  z-index: 1;
+}
+
 </style>

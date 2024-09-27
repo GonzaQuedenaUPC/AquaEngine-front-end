@@ -113,6 +113,7 @@ export default {
 
 .dropdown__menu {
   position: absolute;
+  z-index: 1000;
 
   background-color: var(--primary-color);
   width: 50%;
