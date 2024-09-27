@@ -9,4 +9,8 @@ export class ProfileService {
         console.log(this._resourceEndpoint);
         return http.get(this._resourceEndpoint);
     }
+
+    getById(id) {
+        return http.get(`${this._resourceEndpoint}/${id}`);
+    }
 }
