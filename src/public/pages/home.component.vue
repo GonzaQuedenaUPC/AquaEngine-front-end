@@ -11,7 +11,7 @@ export default {
       <h2 class="home__title">Select your service</h2>
 
       <div class="features">
-        <router-link to="#">
+        <router-link to="/inventory">
           <pv-card class="feature__item">
             <template #content>
               <div class="feature__content">
