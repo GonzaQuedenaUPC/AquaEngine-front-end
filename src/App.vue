@@ -5,6 +5,19 @@ export default {
 
   components: {
     toolbarContent
+  },
+
+  data() {
+    return {
+      user: {},
+    }
+  },
+
+  methods: {
+    onProfileLoaded(value) {
+      this.user = value;
+      console.log(this.user);
+    }
   }
 }
 
@@ -13,11 +26,11 @@ export default {
 <template>
   <div class="app__container">
     <header class="header">
-      <toolbar-content :user="{ username: 'Gonzalo' }"/>
+      <toolbar-content :user="this.user"/>
     </header>
 
     <main class="main">
-      <router-view/>
+      <router-view @profile-selected="onProfileLoaded"/>
     </main>
   </div>
 </template>
