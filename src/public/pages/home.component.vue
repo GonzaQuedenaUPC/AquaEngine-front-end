@@ -5,8 +5,8 @@ export default {
 </script>
 
 <template>
-  <main class="home">
-    <div class="home__container">
+  <main class="home__container container">
+    <div class="home__content content">
 
       <h2 class="home__title">Select your service</h2>
 
@@ -60,22 +60,6 @@ export default {
 </template>
 
 <style scoped>
-
-.home {
-  width: 90%;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.home__container {
-  width: 65%;
-  padding: 40px;
-  border-radius: .5rem;
-  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
-}
 
 .home__title {
   margin: 1rem 0;
