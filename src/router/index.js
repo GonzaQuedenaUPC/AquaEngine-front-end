@@ -7,9 +7,11 @@ import CategoryManagementComponent from "../publishing/pages/category-management
 
 import HomeViewComponent from "../public/pages/home.component.vue";
 import InventoryViewComponent from '../control/pages/inventory-view.component.vue';
+import MonitoringViewComponent from "../analytics/pages/monitoring-view.component.vue";
 
 const routes = [
     { path: '/inventory', name: 'inventory', component: InventoryViewComponent, meta: { title: 'Inventory'}},
+    {path:'/monitoring', name:'monitoring', component: MonitoringViewComponent, meta: {title: 'Monitoring'}},
     { path: '/home', name: 'home', component: HomeViewComponent, meta: { title: 'Home'}},
     { path: '/', redirect: '/home'}
 ]
