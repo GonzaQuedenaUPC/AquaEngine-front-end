@@ -4,40 +4,52 @@
       "id": 1,
       "name": "John Doe",
       "email": "johndoe@gmail.com",
-      "ruc": "123456789"
-    }
-  ],
-  "products": [
-    {
-      "id": 1,
-      "name": "Product 1",
-      "price": 100,
-      "urlToImage": "https://via.placeholder.com/150"
+      "ruc": "123456789",
+      "inventory": [
+        {
+          "productId": "prod1",
+          "name": "Product 1",
+          "price": 100,
+          "stock": 10,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod2",
+          "name": "Product 2",
+          "price": 200,
+          "stock": 20,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod3",
+          "name": "Product 3",
+          "price": 300,
+          "stock": 30,
+          "urlToImage": "https://via.placeholder.com/150"
+        }
+      ]
     },
     {
       "id": 2,
-      "name": "Product 2",
-      "price": 200,
-      "urlToImage": "https://via.placeholder.com/150"
-    },
-    {
-      "id": 3,
-      "name": "Product 3",
-      "price": 300,
-      "urlToImage": "https://via.placeholder.com/150"
-    },
-    {
-      "id": 4,
-      "name": "Product 4",
-      "price": 400,
-      "urlToImage": "https://via.placeholder.com/150"
-    },
-    {
-      "id": 5,
-      "name": "Product 5",
-      "price": 500,
-      "stock": 10,
-      "urlToImage": "https://via.placeholder.com/150"
+      "name": "Michael Jackson",
+      "email": "michaeljackson@gmail.com",
+      "ruc": "987654321",
+      "inventory": [
+        {
+          "productId": "prod1",
+          "name": "Product 1",
+          "price": 400,
+          "stock": 40,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod2",
+          "name": "Product 2",
+          "price": 500,
+          "stock": 10,
+          "urlToImage": "https://via.placeholder.com/150"
+        }
+      ]
     }
   ],
   "companies": [
