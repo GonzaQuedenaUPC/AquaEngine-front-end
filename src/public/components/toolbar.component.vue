@@ -83,7 +83,7 @@ export default {
   --img1: scale(0);
   --img2: scale(1);
 
-  --clip: inset(15.5% 0 0 0);
+  --clip: inset(14%  0 0 0);
 }
 
 .nav__menu {
@@ -128,7 +128,7 @@ export default {
 
   padding: 155px 0 0 30px;
 
-  clip-path: var(--clip, inset(15% 0 0 100%));
+  clip-path: var(--clip, inset(14% 0 0 100%));
   transition: clip-path .5s;
 }
 
