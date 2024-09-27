@@ -6,15 +6,17 @@ import CategoryManagementComponent from "../publishing/pages/category-management
 */
 
 import HomeViewComponent from "../public/pages/home.component.vue";
+import InventoryViewComponent from '../control/pages/inventory-view.component.vue';
 
 const routes = [
+    { path: '/inventory', name: 'inventory', component: InventoryViewComponent, meta: { title: 'Inventory'}},
     { path: '/home', name: 'home', component: HomeViewComponent, meta: { title: 'Home'}},
     { path: '/', redirect: '/home'}
-];
+]
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
 });
 
 router.beforeEach((to, from, next) => {

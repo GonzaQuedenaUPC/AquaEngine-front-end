@@ -3,8 +3,8 @@ export default {
   name: "toolbar-content",
 
   props: {
-    user: {
-      type: Object,
+    profile: {
+      type: {},
       required: true
     }
   }
@@ -16,9 +16,9 @@ export default {
     <pv-toolbar class="toolbar">
       <template #start>
         <div class="toolbar__logo">
-          <a href="#">
+          <router-link to="/">
             <img src="../../assets/images/aqua-engine-logo.svg" alt="aqua-engine-logo">
-          </a>
+          </router-link>
         </div>
       </template>
 
@@ -28,7 +28,7 @@ export default {
           <li class="dropdown__list dropdown__user--main">
             <a href="#" class="dropdown__link">
               <img src="../../assets/images/user.svg" class="nav__icon" alt="user-icon"/>
-              <span class="dropdown__span dropdown__span--user">{{ user.username }}</span>
+              <span class="dropdown__span dropdown__span--user">{{ profile.name || profile._name }}</span>
             </a>
           </li>
         </ul>
@@ -44,7 +44,7 @@ export default {
           <li class="dropdown__list dropdown__user--menu">
             <a href="#" class="dropdown__link">
               <img src="../../assets/images/user.svg" class="nav__icon nav__icon--user" alt="user-icon"/>
-              <span class="dropdown__span dropdown__span--user">{{ user.username }}</span>
+              <span class="dropdown__span dropdown__span--user">{{ profile.name || profile._name }}</span>
             </a>
           </li>
 
@@ -113,6 +113,7 @@ export default {
 
 .dropdown__menu {
   position: absolute;
+  z-index: 1000;
 
   background-color: var(--primary-color);
   width: 50%;

@@ -1,17 +1,67 @@
 <script>
+import { ProfileService } from "../../control/services/profile.service.js";
+import Profile from "../../control/models/profile.entity.js";
+
 export default {
-  name: "home-view"
+  name: "home-view",
+
+  data() {
+    return {
+      profileService: null,
+      profile: new Profile({}),
+    }
+  },
+
+  //#region Methods
+  methods: {
+    emitProfileSelected(profile) {
+      this.$emit('profile-selected', profile);
+    },
+
+    _buildProfileFromResponse(response) {
+      return new Profile({
+        id: response.id,
+        name: response.name,
+        email: response.email,
+        ruc: response.ruc,
+        inventory: response.inventory
+      });
+    },
+
+    _getProfileById(id) {
+      this.profileService.getById(id)
+          .then(response => {
+            this.profile = this._buildProfileFromResponse(response.data);
+            this.emitProfileSelected(this.profile);
+
+            localStorage.setItem('profile', JSON.stringify(this.profile));
+          })
+          .catch(error => {
+            console.error(error);
+          });
+    },
+
+
+  },
+  //#endregion
+
+  //#region Lifecycle Hooks
+  created() {
+    this.profileService = new ProfileService();
+    this._getProfileById(2);
+  }
+  //#endregion
 }
 </script>
 
 <template>
-  <main class="home">
-    <div class="home__container">
+  <main class="home__container container">
+    <div class="home__content content">
 
       <h2 class="home__title">Select your service</h2>
 
       <div class="features">
-        <router-link to="#">
+        <router-link to="/inventory">
           <pv-card class="feature__item">
             <template #content>
               <div class="feature__content">
@@ -60,22 +110,6 @@ export default {
 </template>
 
 <style scoped>
-
-.home {
-  width: 90%;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.home__container {
-  width: 65%;
-  padding: 40px;
-  border-radius: .5rem;
-  box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
-}
 
 .home__title {
   margin: 1rem 0;

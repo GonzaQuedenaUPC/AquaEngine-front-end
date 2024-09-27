@@ -5,6 +5,32 @@ export default {
 
   components: {
     toolbarContent
+  },
+
+  data() {
+    return {
+      profile: {},
+      inventory: []
+    }
+  },
+
+  methods: {
+    onProfileLoaded(value) {
+      this.profile = value;
+      this.inventory = value.inventory || [];
+
+      localStorage.setItem('profile', JSON.stringify(this.profile));
+    },
+  },
+
+  mounted() {
+
+    const savedUser = localStorage.getItem('profile');
+
+    if (savedUser) {
+      this.profile = JSON.parse(savedUser);
+      this.inventory = this.profile.inventory || [];
+    }
   }
 }
 
@@ -13,10 +39,10 @@ export default {
 <template>
   <div class="app__container">
     <header class="header">
-      <toolbar-content :user="{ username: 'Gonzalo' }"/>
+      <toolbar-content :profile="this.profile"/>
     </header>
     <main class="main">
-      <router-view/>
+      <router-view @profile-selected="onProfileLoaded" @profile-loaded="onProfileLoaded" :inventory="this.inventory"/>
     </main>
   </div>
 </template>
