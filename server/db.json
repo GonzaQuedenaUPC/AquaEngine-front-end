@@ -179,7 +179,7 @@
       "name": "Product 3",
       "urlToImage": "https://via.placeholder.com/150",
       "lastMaintenance": "15-09-2024",
-      "status": "maintenance",
+      "status": "in-maintenance",
       "maintenance": [
         {
           "id": 301,

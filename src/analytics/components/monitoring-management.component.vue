@@ -7,7 +7,7 @@ export default {
       type: Array,
       required: true
     }
-  }
+  },
 };
 </script>
 
@@ -21,7 +21,10 @@ export default {
 
   <pv-column field="representative.name" header="" style="width: 25%">
     <template #body="slotProps">
-      <pv-button label="MaintenanceLogs" severity="success"/>
+
+      <router-link :to="`/monitoring/${slotProps.data.id}/maintenance/`">
+        <pv-button label="MaintenanceLogs" severity="success"/>
+      </router-link>
     </template>
   </pv-column>
 </pv-data-table>

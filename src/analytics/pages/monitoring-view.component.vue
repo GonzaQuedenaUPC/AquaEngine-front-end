@@ -24,6 +24,7 @@ export default {
     try {
       const response = await this.monitoringService.getAll();
       this.localMonitoring = response.data;
+      console.log(this.localMonitoring);
     } catch (error) {
       console.error('Failed to load monitoring data:', error);
     }
@@ -37,8 +38,8 @@ export default {
     <div class="container">
       <div class="content">
         <div class="inventory">
-          <h1 class="inventory__title">Inventory</h1>
-          <p class="inventory__info">Track the fluctuation of your products</p>
+          <h1 class="monitoring__title">Equipment Monitoring</h1>
+          <p class="monitoring__info">Monitor and track equipment performance.</p>
           <monitoring-management-component :monitoring="this.localMonitoring"></monitoring-management-component>
         </div>
       </div>
@@ -48,7 +49,7 @@ export default {
 
   <style scoped>
 
-    .inventory__info {
+    .monitoring__info {
       margin-top: 10px;
       margin-bottom: 25px;
     }
