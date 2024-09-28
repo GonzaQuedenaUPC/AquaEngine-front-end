@@ -12,7 +12,6 @@ import MaintenanceViewComponent from "../analytics/pages/maintenance-view.compon
 
 const routes = [
     { path: '/inventory', name: 'inventory', component: InventoryViewComponent, meta: { title: 'Inventory'}},
-    {path:'/monitoring', name:'monitoring', component: MonitoringViewComponent, meta: {title: 'Monitoring'}},
     { path: '/home', name: 'home', component: HomeViewComponent, meta: { title: 'Home'}},
     {path: '/monitoring/:id/maintenance', name: 'maintenance-view', component: MaintenanceViewComponent, props: true},
     { path: '/', redirect: '/home'}
