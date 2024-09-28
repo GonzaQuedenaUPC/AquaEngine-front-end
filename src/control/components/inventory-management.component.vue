@@ -10,8 +10,18 @@ export default {
   },
 
   methods: {
-    viewProduct(product) {
-      this.$emit('view-product', product);
+    _emitItemSelected(item) {
+      this.$emit('item-selected', item);
+    },
+
+    _emitPopUpState(item) {
+      this._emitItemSelected(item);
+      this.$emit('pop-up-state', true);
+    },
+
+    emitData(item) {
+      this._emitPopUpState();
+      this._emitItemSelected(item);
     }
   }
 }
@@ -25,7 +35,7 @@ export default {
 
     <pv-column field="representative.name" header="" style="width: 25%">
       <template #body="slotProps">
-        <pv-button label="View" severity="success" @click="viewProduct(slotProps.data)"/>
+        <pv-button label="View" severity="success" @click="emitData(slotProps.data)"/>
       </template>
     </pv-column>
   </pv-data-table>
