@@ -28,6 +28,7 @@ export default {
     } catch (error) {
       console.error('Failed to load monitoring data:', error);
     }
+
   }
 
 };
