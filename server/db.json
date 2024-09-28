@@ -121,14 +121,109 @@
       "name": "Product 1",
       "urlToImage": "https://via.placeholder.com/150",
       "lastMaintenance": "20-09-2024",
-      "status": "active"
+      "status": "active",
+      "maintenance": [
+        {
+          "id": 101,
+          "date": "20-09-2024",
+          "technician": "John Doe",
+          "issueType": "Firmware Update",
+          "description": "Updated to firmware version 4.2.1 to address connectivity issues.",
+          "additionalInfo": "System rebooted and tested successfully."
+        },
+        {
+          "id": 102,
+          "date": "15-07-2024",
+          "technician": "Jane Smith",
+          "issueType": "Sensor Calibration",
+          "description": "Calibrated sensors for accurate readings.",
+          "additionalInfo": "No issues detected during calibration."
+        },
+        {
+          "id": 103,
+          "date": "02-05-2024",
+          "technician": "Michael Lee",
+          "issueType": "Power Supply Issue",
+          "description": "Replaced power supply unit after unexpected shutdowns.",
+          "additionalInfo": "System stable after replacement."
+        }
+      ]
     },
     {
       "id": 2,
       "name": "Product 2",
       "urlToImage": "https://via.placeholder.com/150",
       "lastMaintenance": "04-08-2024",
-      "status": "disabled"
+      "status": "disabled",
+      "maintenance": [
+        {
+          "id": 201,
+          "date": "04-08-2024",
+          "technician": "Jane Smith",
+          "issueType": "Hardware Replacement",
+          "description": "Replaced faulty power supply unit.",
+          "additionalInfo": "System is currently disabled awaiting further diagnostics."
+        },
+        {
+          "id": 202,
+          "date": "10-03-2024",
+          "technician": "John Doe",
+          "issueType": "Software Bug",
+          "description": "Fixed issue causing periodic crashes.",
+          "additionalInfo": "Applied patch and tested successfully."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "urlToImage": "https://via.placeholder.com/150",
+      "lastMaintenance": "15-09-2024",
+      "status": "in-maintenance",
+      "maintenance": [
+        {
+          "id": 301,
+          "date": "15-09-2024",
+          "technician": "Mike Johnson",
+          "issueType": "Preventive Maintenance",
+          "description": "Performed routine check-up and cleaned internal components.",
+          "additionalInfo": "No issues detected; system is operating normally."
+        },
+        {
+          "id": 302,
+          "date": "01-02-2024",
+          "technician": "Emily Davis",
+          "issueType": "Battery Replacement",
+          "description": "Replaced backup battery for uninterrupted operation.",
+          "additionalInfo": "Battery functioning correctly after replacement."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "urlToImage": "https://via.placeholder.com/150",
+      "lastMaintenance": "10-09-2024",
+      "status": "error",
+      "maintenance": [
+        {
+          "id": 401,
+          "date": "10-09-2024",
+          "technician": "Alex Brown",
+          "issueType": "Critical Error",
+          "description": "Detected critical error in the main controller unit.",
+          "additionalInfo": "The unit failed to start after the error. Needs replacement of controller unit and reprogramming."
+        },
+        {
+          "id": 402,
+          "date": "05-04-2024",
+          "technician": "David Green",
+          "issueType": "Network Configuration",
+          "description": "Reconfigured network settings to resolve connectivity issues.",
+          "additionalInfo": "Tested and verified network stability."
+        }
+      ]
     }
   ]
+
 }

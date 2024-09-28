@@ -83,7 +83,7 @@ export default {
           </pv-card>
         </router-link>
 
-        <router-link to="#">
+        <router-link to="/monitoring">
           <pv-card class="feature__item">
             <template #content>
               <div class="feature__content">
