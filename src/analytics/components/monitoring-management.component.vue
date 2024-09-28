@@ -1,39 +1,49 @@
 <script>
 export default {
   name: "monitoring-management",
-
-  props:{
+  props: {
     monitoring: {
       type: Array,
       required: true
     }
-  },
+  }
 };
 </script>
 
 <template>
-
-<pv-data-table :value="this.monitoring" paginator :rows="5" table-style="min-width:50 rem" class="monitoring__table" >
-  <pv-column field="id" header="ID" style="width: 25%"></pv-column>
-  <pv-column field="name" header="Name" style="width: 25%"></pv-column>
-  <pv-column field="lastMaintenance" header="LastMaintenanceDate" style="width: 25%"></pv-column>
-  <pv-column field="status" header="Status" style="width: 25%"></pv-column>
-
-  <pv-column field="representative.name" header="" style="width: 25%">
-    <template #body="slotProps">
-
-      <router-link :to="`/monitoring/${slotProps.data.id}/maintenance/`">
-        <pv-button label="MaintenanceLogs" severity="success"/>
-      </router-link>
-    </template>
-  </pv-column>
-</pv-data-table>
-
+  <div class="monitoring__cards">
+    <div v-for="item in monitoring" :key="item.id" class="monitoring__card">
+      <pv-card>
+        <template #title>
+          ID: {{ item.id }}
+        </template>
+        <template #content>
+          <p><strong>Name:</strong> {{ item.name }}</p>
+          <p><strong>Last Maintenance Date:</strong> {{ item.lastMaintenance }}</p>
+          <p><strong>Status:</strong> {{ item.status }}</p>
+        </template>
+        <template #footer>
+          <router-link :to="`/monitoring/${item.id}/maintenance/`">
+            <pv-button label="Maintenance Logs" severity="success" class="logs__button"/>
+          </router-link>
+        </template>
+      </pv-card>
+    </div>
+  </div>
 </template>
 
 <style scoped>
-.monitoring__table{
-  position: relative;
-  z-index: 1;
+.monitoring__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
+
+.monitoring__card {
+  width: calc(33.333% - 20px);
+}
+.logs__button{
+  background-color: #8298E7;
+}
+
 </style>
