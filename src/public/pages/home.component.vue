@@ -56,7 +56,7 @@ export default {
 
 <template>
 
-  <main class="w-full">
+  <section class="w-full lg:-mt-8">
 
     <div class="container home pb-8 pt-5">
 
@@ -110,7 +110,7 @@ export default {
 
       </div>
     </div>
-  </main>
+  </section>
 
 
 </template>
