@@ -58,9 +58,9 @@ export default {
 
   <main class="w-full">
 
-    <div class="container home w-[90%] lg:w-[70%] xl:w-[50%] pb-8 mx-auto mt-10 lg:mt-32 rounded-xl p-5">
+    <div class="container home pb-8 pt-5">
 
-      <h2 class="home__title mb-5">Select your service</h2>
+      <h2 class="home__title title mb-5">Select your service</h2>
 
       <div class="home__features features">
 
@@ -116,10 +116,6 @@ export default {
 </template>
 
 <style scoped>
-
-.home__title {
-  @apply text-xl font-bold;
-}
 
 .features {
   @apply grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16;

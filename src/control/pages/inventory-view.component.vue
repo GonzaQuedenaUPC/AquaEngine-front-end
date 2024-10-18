@@ -53,22 +53,22 @@ export default {
 </script>
 
 <template>
-  <div class="container">
-    <div class="content">
+  <section class="container">
+
+    <div>
+
       <div class="inventory">
-        <h1 class="inventory__title">Inventory</h1>
-        <p class="inventory__info">Track the fluctuation of your products</p>
+        <h1 class="inventory__title title">Inventory</h1>
+        <p class="mb-4">Track the fluctuation of your products</p>
         <inventory-management-component :inventory="localInventory" @item-selected="_handleItemSelected" @pop-up-state="_handlePopUpState"/>
       </div>
 
       <inventory-item-pop-up-component v-if="selectedProduct !== null" :product="selectedProduct" :visible="isPopUpVisible" @pop-up-state="_handlePopUpState"/>
     </div>
-  </div>
+
+  </section>
 </template>
 
 <style scoped>
-.inventory__info {
-  margin-top: 10px;
-  margin-bottom: 25px;
-}
+
 </style>

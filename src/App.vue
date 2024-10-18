@@ -37,11 +37,12 @@ export default {
 </script>
 
 <template>
-  <div class="app__container">
+  <div class="app__container h-screen flex flex-col">
     <header class="header">
       <toolbar-content :profile="this.profile"/>
     </header>
-    <main class="main">
+
+    <main class="main mt-8 lg:m-0 h-full flex flex-col items-center justify-center">
       <router-view @profile-selected="onProfileLoaded" @profile-loaded="onProfileLoaded" :inventory="this.inventory"/>
     </main>
   </div>
@@ -49,20 +50,5 @@ export default {
 
 <style scoped>
 
-.app__container {
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-}
-
-.header {
-  width: 100%;
-}
-
-.main {
-  /*main ocupa el espacio restante */
-  flex-grow: 1;
-  overflow-y: auto;
-}
 
 </style>
