@@ -29,28 +29,28 @@ export default {
 </script>
 
 <template>
-  <pv-dialog :header="product.name"  :visible="visible" modal @hide="closeDialog">
+  <pv-dialog :header="product.name" :visible="visible" modal @hide="closeDialog" class="w-[300px]">
     <template #header>
-      <div class="flex justify-content-start">
-        <h1>Product Detail</h1>
+      <div class="-mb-5">
+        <h1 class="title mb-0">Product Detail</h1>
+        <p><strong>ID:</strong> {{ product.productId }}</p>
       </div>
     </template>
 
-    <div class="flex justify-content-center gap-3">
-      <div class="flex">
-        <img :src="product.urlToImage" alt="product-image" class="max-w-10rem max-h-10" />
+    <div class="flex flex-col gap-3 my-4">
+      <div class="flex flex-column items-center justify-center gap-2">
+        <img :src="product.urlToImage" alt="product-image" class="w-[60%]"/>
+        <p><strong>Name:</strong> {{ product.name }}</p>
       </div>
 
       <div class="flex-column justify-content-center align-content-center">
-        <p><strong>ID:</strong> {{ product.productId }}</p>
-        <p><strong>Name:</strong> {{ product.name }}</p>
         <p><strong>Price:</strong> {{ product.price }}</p>
         <p><strong>Stock:</strong> {{ product.stock }}</p>
       </div>
     </div>
 
     <template #footer>
-      <pv-button label="Close" severity="danger" @click="closeDialog"/>
+      <pv-button label="Close" severity="danger" @click="closeDialog" class="-mt-5"/>
     </template>
   </pv-dialog>
 </template>

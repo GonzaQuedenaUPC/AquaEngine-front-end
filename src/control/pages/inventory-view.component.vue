@@ -55,7 +55,7 @@ export default {
 <template>
   <section class="container">
 
-    <div>
+    <div class="pt-3">
 
       <div class="inventory">
         <h1 class="inventory__title title">Inventory</h1>
