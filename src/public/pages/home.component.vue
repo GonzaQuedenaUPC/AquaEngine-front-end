@@ -55,14 +55,17 @@ export default {
 </script>
 
 <template>
-  <main class="home__container container">
-    <div class="home__content content">
 
-      <h2 class="home__title">Select your service</h2>
+  <main class="w-full">
 
-      <div class="features">
-        <router-link to="/inventory">
-          <pv-card class="feature__item">
+    <div class="container home w-[90%] lg:w-[70%] xl:w-[50%] pb-8 mx-auto mt-10 lg:mt-32 rounded-xl p-5">
+
+      <h2 class="home__title mb-5">Select your service</h2>
+
+      <div class="home__features features">
+
+        <router-link to="/inventory" class="feature__item">
+          <pv-card class="feature__card">
             <template #content>
               <div class="feature__content">
                 <img src="../../assets/images/inventory.svg" alt="inventory-icon" class="feature__icon"/>
@@ -72,8 +75,8 @@ export default {
           </pv-card>
         </router-link>
 
-        <router-link to="#">
-          <pv-card class="feature__item">
+        <router-link to="#" class="feature__item">
+          <pv-card class="feature__card">
             <template #content>
               <div class="feature__content">
                 <img src="../../assets/images/invoicing.svg" alt="invoicing-icon" class="feature__icon"/>
@@ -83,8 +86,8 @@ export default {
           </pv-card>
         </router-link>
 
-        <router-link to="/monitoring">
-          <pv-card class="feature__item">
+        <router-link to="/monitoring" class="feature__item">
+          <pv-card class="feature__card">
             <template #content>
               <div class="feature__content">
                 <img src="../../assets/images/monitoring.svg" alt="monitoring-icon" class="feature__icon"/>
@@ -94,8 +97,8 @@ export default {
           </pv-card>
         </router-link>
 
-        <router-link to="#">
-          <pv-card class="feature__item">
+        <router-link to="#" class="feature__item">
+          <pv-card class="feature__card">
             <template #content>
               <div class="feature__content">
                 <img src="../../assets/images/machinery.svg" alt="machinery-icon" class="feature__icon"/>
@@ -104,39 +107,39 @@ export default {
             </template>
           </pv-card>
         </router-link>
+
       </div>
     </div>
   </main>
+
+
 </template>
 
 <style scoped>
 
 .home__title {
-  margin: 1rem 0;
+  @apply text-xl font-bold;
 }
 
 .features {
-  padding: 30px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 4rem;
-}
-
-.feature__content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-}
-
-.feature__icon {
-  width: 45px;
-  height: 45px;
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16;
 }
 
 .feature__item {
-  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.4);
-  padding: 20px;
+  @apply w-full col-span-1;
+}
+
+.feature__card {
+  @apply lg:h-[100px] justify-center;
+  box-shadow: 0 0 10px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feature__content {
+  @apply flex flex-row items-center gap-10 w-full h-full;
+}
+
+.feature__icon {
+  @apply w-10 h-10;
 }
 
 </style>
