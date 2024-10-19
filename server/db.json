@@ -135,7 +135,7 @@
           "id": 102,
           "date": "15-07-2024",
           "technician": "Jane Smith",
-          "issueType": "Sensor Calibration",
+          "issueType": "Firmware Update",
           "description": "Calibrated sensors for accurate readings.",
           "additionalInfo": "No issues detected during calibration."
         },
@@ -193,7 +193,7 @@
           "id": 302,
           "date": "01-02-2024",
           "technician": "Emily Davis",
-          "issueType": "Battery Replacement",
+          "issueType": "Preventive Maintenance",
           "description": "Replaced backup battery for uninterrupted operation.",
           "additionalInfo": "Battery functioning correctly after replacement."
         }
