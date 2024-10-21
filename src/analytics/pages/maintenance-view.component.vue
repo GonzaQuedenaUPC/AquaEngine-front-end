@@ -32,14 +32,6 @@ export default {
 
 <template>
   <div class="container">
-    <div class="content">
-      <div class="maintenance__table">
-        <div class="chart__content">
-        <h1>Chart</h1>
-        <maintenance-chart-component/>
-      </div>
-    </div>
-  </div>
 
     <div class="content">
       <div class="maintenance">
@@ -69,8 +61,5 @@ export default {
   display: flex;
   flex-direction: row-reverse;
 
-}
-.chart__content{
-  margin-left: 20px;
 }
 </style>
