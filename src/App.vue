@@ -42,7 +42,7 @@ export default {
       <toolbar-content :profile="this.profile"/>
     </header>
 
-    <main class="main mt-8 h-full flex flex-col items-center justify-center">
+    <main class="main mt-6 h-full flex flex-col items-center justify-center">
       <router-view @profile-selected="onProfileLoaded" @profile-loaded="onProfileLoaded" :inventory="this.inventory"/>
     </main>
   </div>
