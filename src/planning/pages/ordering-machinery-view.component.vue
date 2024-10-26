@@ -45,5 +45,35 @@ export default {
 </template>
 
 <style scoped>
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
 
+.content {
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.ordering-machinery {
+  text-align: center;
+}
+
+.ordering-machinery__title {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.ordering-machinery__info {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
 </style>
