@@ -19,7 +19,7 @@ name: "ordering-machinery",
           ID: {{ item.id }}
         </template>
         <template #content>
-          <p>{{ item.machine }}</p>
+          <p>{{ item.name }}</p>
           <p>{{ item.request }}</p>
           <p>{{ item.units }}</p>
         </template>
