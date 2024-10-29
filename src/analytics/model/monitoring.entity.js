@@ -1,6 +1,8 @@
+import Maintenance from './maintenance.entity.js';
+
 class Monitoring{
 
-    constructor({id='',name='',urlToImage='',lastMaintenance='',status='',maintenance=[]}) {
+    constructor({id='',name='',urlToImage='',lastMaintenance='',status='',maintenance=Maintenance}) {
     this._id = id;
     this._name = name;
     this._urlToImage = urlToImage;

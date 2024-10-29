@@ -2,11 +2,13 @@
 
 import MonitoringManagementComponent from "../components/monitoring-management.component.vue";
 import {MonitoringService} from "../services/monitoring.service.js";
+import MaintenanceChartComponent from "../components/maintenance-chart.component.vue";
 
 export default {
   name: "MonitoringView",
   components:{
-    MonitoringManagementComponent
+    MonitoringManagementComponent,
+    MaintenanceChartComponent
   },
   props:{
     monitoring:{
@@ -22,12 +24,14 @@ export default {
   },
   async created() {
     try {
+
       const response = await this.monitoringService.getAll();
       this.localMonitoring = response.data;
       console.log(this.localMonitoring);
     } catch (error) {
       console.error('Failed to load monitoring data:', error);
     }
+
   }
 
 };
@@ -43,6 +47,15 @@ export default {
           <monitoring-management-component :monitoring="this.localMonitoring"></monitoring-management-component>
         </div>
       </div>
+      <div class="content">
+        <div class="maintenance__table">
+          <div class="chart__content">
+            <h1>Chart</h1>
+            <maintenance-chart-component/>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </template>
@@ -53,5 +66,7 @@ export default {
       margin-top: 10px;
       margin-bottom: 25px;
     }
-
+    .chart__content{
+      margin-left: 20px;
+    }
   </style>
