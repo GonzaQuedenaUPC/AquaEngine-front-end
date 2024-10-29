@@ -45,8 +45,21 @@
           </template>
         </pv-card>
       </router-link>
+
+      <router-link to="/invoice-history" class="feature-item">
+        <pv-card class="feature-card">
+          <template #content>
+            <div class="feature-content">
+              <img src="../../assets/images/history.svg" alt="history-icon" class="feature-icon" />
+              <span>Historial de Facturas</span>
+            </div>
+          </template>
+        </pv-card>
+      </router-link>
+
     </div>
   </div>
+
 </template>
 
 <script>
