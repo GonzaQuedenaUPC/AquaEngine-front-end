@@ -68,8 +68,11 @@ h1 {
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .feature-item {
@@ -79,6 +82,7 @@ h1 {
 .feature-card {
   background-color: #2a2a2a;
   transition: transform 0.3s ease;
+  height: 100%;
 }
 
 .feature-card:hover {
@@ -89,7 +93,9 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 1rem;
+  height: 100%;
 }
 
 .feature-icon {
@@ -101,5 +107,6 @@ h1 {
 span {
   color: #ffffff;
   font-size: 1.2rem;
+  text-align: center;
 }
 </style>
