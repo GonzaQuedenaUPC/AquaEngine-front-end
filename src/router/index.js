@@ -5,13 +5,15 @@ import InventoryViewComponent from "../control/pages/inventory-view.component.vu
 import MonitoringViewComponent from "../analytics/pages/monitoring-view.component.vue";
 import MaintenanceViewComponent from "../analytics/pages/maintenance-view.component.vue";
 import InvoicingViewComponent from "../invoicing/components/Invoicing.component.vue";
+import InvoiceHistoryViewComponent from "../invoicing/components/Invoice-History.component.vue";
 
 const routes = [
-    { path: '/inventory', name: 'inventory', component: InventoryViewComponent, meta: { title: 'Inventory' }},
-    { path: '/monitoring', name: 'monitoring', component: MonitoringViewComponent, meta: { title: 'Monitoring' }},
-    { path: '/home', name: 'home', component: HomeViewComponent, meta: { title: 'Home' }},
+    { path: '/inventory', name: 'inventory', component: InventoryViewComponent, meta: { title: 'Inventario' }},
+    { path: '/monitoring', name: 'monitoring', component: MonitoringViewComponent, meta: { title: 'Monitoreo' }},
+    { path: '/home', name: 'home', component: HomeViewComponent, meta: { title: 'Inicio' }},
     { path: '/monitoring/:id/maintenance', name: 'maintenance-view', component: MaintenanceViewComponent, props: true },
-    { path: '/invoicing', name: 'invoicing', component: InvoicingViewComponent, meta: { title: 'Invoicing' }},
+    { path: '/invoicing', name: 'invoicing', component: InvoicingViewComponent, meta: { title: 'Facturación' }},
+    { path: '/invoice-history', name: 'invoice-history', component: InvoiceHistoryViewComponent, meta: { title: 'Historial de Facturas' }},
     { path: '/', redirect: '/home' }
 ];
 
