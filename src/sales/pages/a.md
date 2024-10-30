@@ -1,1 +1,0 @@
-borren esto gente
