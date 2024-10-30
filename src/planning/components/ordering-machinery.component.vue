@@ -15,10 +15,23 @@ name: "ordering-machinery",
   <div class="ordering__cards">
     <div v-for="item in ordering" :key="item.id" class="ordering__card">
       <pv-card>
-        <template #title>
-          ID: {{ item.id }}
-        </template>
         <template #content>
+          <img :src="item.urlToImage" alt="Machine" class="machine__image">
+          <p>{{ item.name }}</p>
+          <p>{{ item.request }}</p>
+          <p>{{ item.units }}</p>
+
+          <img :src="item.urlToImage" alt="Machine" class="machine__image">
+          <p>{{ item.name }}</p>
+          <p>{{ item.request }}</p>
+          <p>{{ item.units }}</p>
+
+          <img :src="item.urlToImage" alt="Machine" class="machine__image">
+          <p>{{ item.name }}</p>
+          <p>{{ item.request }}</p>
+          <p>{{ item.units }}</p>
+
+          <img :src="item.urlToImage" alt="Machine" class="machine__image">
           <p>{{ item.name }}</p>
           <p>{{ item.request }}</p>
           <p>{{ item.units }}</p>
