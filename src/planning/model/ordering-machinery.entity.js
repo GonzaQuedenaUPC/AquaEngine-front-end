@@ -1,9 +1,9 @@
 class OrderingMachinery {
-    constructor(id='', name='', units = 0, imageUrl = '' ) {
+    constructor(id='', name='', units = 0, request = false) {
         this.id=id;
         this.name=name;
+        this.request=request;
         this.units=units;
-        this.imageUrl=imageUrl;
     }
 
     get id() {
@@ -14,11 +14,11 @@ class OrderingMachinery {
         return this.name;
     }
 
-    get units() {
-        return this.units;
+    get request() {
+        return this.request=true;
     }
 
-    get imageUrl() {
-        return this.imageUrl;
+    get units() {
+        return this.units;
     }
 }
