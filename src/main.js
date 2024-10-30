@@ -1,7 +1,6 @@
 import {createApp} from 'vue'
 import './style.css'
-import App from './app.vue'
-
+import App from './App.vue'
 
 // PrimeVue
 import PrimeVue from 'primevue/config';
@@ -37,7 +36,6 @@ import Tag from "primevue/tag";
 import Textarea from "primevue/textarea";
 import Toolbar from "primevue/toolbar";
 import Toast from "primevue/toast";
-// import router from "./router/index.js";
 import SelectButton from "primevue/selectbutton";
 import Chart from "primevue/chart";
 
@@ -48,22 +46,20 @@ const app = createApp(App);
 // Use i18n
 import i18n from "./i18n.js";
 
-app.use(i18n);
-
-
-// Use Router
 import router from "./router/index.js";
-app.use(router);
 
-// Use PrimeVue
-
+//set PrimeVUe configuration
 app.use(PrimeVue, { theme: { preset: Aura }, ripple: true })
     .use(ConfirmationService)
     .use(DialogService)
     .use(ToastService);
 
-// Use PrimeVue Components
+//setting up i18n configuration
+app.use(i18n);
+//setting up router configuration
+app.use(router);
 
+//using PrimeVue Components
 app.component('pv-button', Button)
     .component('pv-card', Card)
     .component('pv-column', Column)
@@ -87,8 +83,7 @@ app.component('pv-button', Button)
     .component('pv-textarea', Textarea)
     .component('pv-toolbar', Toolbar)
     .component('pv-toast', Toast)
-
     .component('pv-chart',Chart);
 
-// Mount app
+//mount app
 app.mount('#app');
