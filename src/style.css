@@ -19,6 +19,13 @@
   padding: 0;
 }
 
+html, body {
+
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 body {
   font-family: "Inria Serif", serif;
 }
@@ -30,7 +37,7 @@ a {
 
 .container {
   box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
-  @apply w-[90%] lg:w-[70%] xl:w-[55%] p-5 mx-auto rounded-xl md:px-8;
+  @apply w-[90%] lg:w-[70%] xl:w-[55%] py-3 px-2 mx-auto rounded-xl md:px-8;
 }
 
 .title {

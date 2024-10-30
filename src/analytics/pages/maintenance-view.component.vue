@@ -33,14 +33,12 @@ export default {
 <template>
   <div class="container">
 
-    <div class="content">
+    <div class="content p-3">
       <div class="maintenance">
-        <h1 class="monitoring__title">Equipment Monitoring</h1>
+        <h1 class="monitoring__title title">Equipment Monitoring</h1>
         <p class="monitoring__info">Monitor and track equipment performance.</p>
         <maintenance-management-component :monitoring="localMonitoring"
-                                        :selectedId="selectedId">
-
-        </maintenance-management-component>
+                                        :selectedId="selectedId"/>
       </div>
   </div>
   </div>
