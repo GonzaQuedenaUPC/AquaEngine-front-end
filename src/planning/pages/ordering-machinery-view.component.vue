@@ -1,6 +1,7 @@
 <script>
 import OrderingMachineryComponent from "../components/ordering-machinery.component.vue";
 import {OrderingMachineryService} from "../services/ordering-machinery.service.js";
+import EventBus  from "../../shared/event-bus.js";
 
 export default {
   name: "ordering-machinery-view",
@@ -16,7 +17,8 @@ export default {
   data(){
     return{
       localMonitoring: [],
-      orderingService: new OrderingMachineryService()
+      orderingService: new OrderingMachineryService(),
+      selectedItem: null
     }
   },
   async created() {
@@ -27,6 +29,14 @@ export default {
     } catch (error) {
       console.error('Failed to load ordering data: ', error);
     }
+  },
+  methods: {
+    handleItemRequested(item) {
+      this.selectedItem = item;
+      EventBus.emit('item-selected', this.selectedItem);
+      console.log('Emitting event: item-selected', this.selectedItem);
+    }
+
   }
 
 };
@@ -38,7 +48,7 @@ export default {
       <div class="ordering-machinery">
         <h1 class="ordering-machinery__title">Ordering Machinery</h1>
         <p class="ordering-machinery__info">Access the ordering system to request and track machinery.</p>
-        <ordering-machinery-component :ordering="this.localMonitoring"></ordering-machinery-component>
+        <ordering-machinery-component :ordering="this.localMonitoring" @item-requested="handleItemRequested"></ordering-machinery-component>
       </div>
     </div>
   </div>
