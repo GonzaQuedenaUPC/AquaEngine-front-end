@@ -8,6 +8,11 @@ name: "ordering-machinery",
       required: true
     }
   },
+  methods: {
+    requestItem(item) {
+      this.$router.push({ name: 'order-detail-view', query: { item: JSON.stringify(item) } });
+    }
+  }
 }
 </script>
 
@@ -20,26 +25,9 @@ name: "ordering-machinery",
           <p>{{ item.name }}</p>
           <p>{{ item.request }}</p>
           <p>{{ item.units }}</p>
-
-          <img :src="item.urlToImage" alt="Machine" class="machine__image">
-          <p>{{ item.name }}</p>
-          <p>{{ item.request }}</p>
-          <p>{{ item.units }}</p>
-
-          <img :src="item.urlToImage" alt="Machine" class="machine__image">
-          <p>{{ item.name }}</p>
-          <p>{{ item.request }}</p>
-          <p>{{ item.units }}</p>
-
-          <img :src="item.urlToImage" alt="Machine" class="machine__image">
-          <p>{{ item.name }}</p>
-          <p>{{ item.request }}</p>
-          <p>{{ item.units }}</p>
         </template>
         <template #footer>
-          <router-link :to>
-            <pv-button label="Request" severity="success" class="request__button"/>
-          </router-link>
+            <pv-button label="Request" severity="success" class="request__button" @click="requestItem(item)"/>
         </template>
       </pv-card>
     </div>
