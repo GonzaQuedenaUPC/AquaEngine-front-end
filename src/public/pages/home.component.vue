@@ -97,7 +97,7 @@ export default {
           </pv-card>
         </router-link>
 
-        <router-link to="#" class="feature__item">
+        <router-link to="/ordering-machinery" class="feature__item">
           <pv-card class="feature__card">
             <template #content>
               <div class="feature__content">
