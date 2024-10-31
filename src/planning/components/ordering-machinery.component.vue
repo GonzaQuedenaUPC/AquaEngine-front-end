@@ -10,7 +10,7 @@ name: "ordering-machinery",
   },
   methods: {
     requestItem(item) {
-      this.$router.push({ name: 'order-detail-view', query: { item: JSON.stringify(item) } });
+      this.$emit('item-requested', item);
     }
   }
 }
