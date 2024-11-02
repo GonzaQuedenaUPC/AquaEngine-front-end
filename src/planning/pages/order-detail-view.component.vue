@@ -25,9 +25,16 @@ export default {
     }
   },
   created() {
-    console.log('Order detail component created');
-    EventBus.on('item-selected', this.handleItemRequested);
+    console.log('Component Order Details created');
+    try {
+      EventBus.on('item-selected', this.handleItemRequested);
+    } catch (error) {
+      console.error('Error to listen the event:', error);
+    }
   },
+  beforeUnmount() {
+    EventBus.off('item-selected', this.handleItemRequested);
+  }
 };
 </script>
 

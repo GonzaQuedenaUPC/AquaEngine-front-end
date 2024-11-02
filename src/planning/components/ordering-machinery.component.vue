@@ -1,4 +1,5 @@
 <script>
+import EventBus  from "../../shared/event-bus.js";
 
 export default {
 name: "ordering-machinery",
@@ -10,6 +11,7 @@ name: "ordering-machinery",
   },
   methods: {
     requestItem(item) {
+      EventBus.emit('item-selected', item);
       this.$emit('item-requested', item);
     }
   }
