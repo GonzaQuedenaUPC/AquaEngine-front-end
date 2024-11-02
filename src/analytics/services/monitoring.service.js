@@ -12,4 +12,13 @@ export class MonitoringService {
     getById(id){
         return http.get(`${this._resourceEndpoint}/${id}`);
     }
+    getMaintenance(){
+        return this.getAll().then(response => {
+            return response.data.map(item => ({
+                maintenance:item.maintenance
+            }));
+
+        }
+        );
+    }
 }

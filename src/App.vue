@@ -2,7 +2,6 @@
 import toolbarContent from './public/components/toolbar.component.vue';
 
 export default {
-
   components: {
     toolbarContent
   },
@@ -18,13 +17,11 @@ export default {
     onProfileLoaded(value) {
       this.profile = value;
       this.inventory = value.inventory || [];
-
       localStorage.setItem('profile', JSON.stringify(this.profile));
     },
   },
 
   mounted() {
-
     const savedUser = localStorage.getItem('profile');
 
     if (savedUser) {
@@ -33,22 +30,20 @@ export default {
     }
   }
 }
-
 </script>
 
 <template>
-  <div class="app__container h-screen flex flex-col">
+  <div class="app__container h-screen flex flex-col lg:overflow-hidden">
     <header class="header">
       <toolbar-content :profile="this.profile"/>
     </header>
 
-    <main class="main mt-8 h-full flex flex-col items-center justify-center">
+    <main class="main mt-4 md:mt-5 h-full flex flex-col items-center justify-center">
       <router-view @profile-selected="onProfileLoaded" @profile-loaded="onProfileLoaded" :inventory="this.inventory"/>
     </main>
   </div>
 </template>
 
 <style scoped>
-
 
 </style>

@@ -1,27 +1,30 @@
 <script>
 import MaintenanceManagementComponent from "../components/maintenance-management.component.vue";
+import MaintenanceChartComponent from "../components/maintenance-chart.component.vue";
 import { MonitoringService } from "../services/monitoring.service.js";
 
 export default {
-  name: "maintenance-view",
+  name: "MaintenanceView",
   components: {
-    MaintenanceManagementComponent
+    MaintenanceManagementComponent,
+    MaintenanceChartComponent
   },
   data() {
     return {
-      localMaintenance: [],
+      localMonitoring: [],
+      selectedId: null,
       monitoringService: new MonitoringService()
     };
   },
   async created() {
-    const monitoringId = this.$route.params.id;
     try {
       const response = await this.monitoringService.getAll();
-      const monitoring = response.data.find(m => m.id === monitoringId);
-      this.localMaintenance = monitoring ? monitoring.maintenance : [];
-      console.log('Fetched maintenance data:', this.localMaintenance);
+      this.localMonitoring = response.data;
+      this.selectedId = parseInt(this.$route.params.id, 10);
+      console.log(this.selectedId);
+      console.log(this.localMonitoring);
     } catch (error) {
-      console.log('Failed to load maintenance data:', error);
+      console.error('Failed to load monitoring data:', error);
     }
   }
 };
@@ -29,19 +32,32 @@ export default {
 
 <template>
   <div class="container">
-    <div class="content">
-      <div class="inventory">
-        <h1 class="maintenance_title">Maintenance Records</h1>
-        <p class="maintenance__info">Track the records of the maintenance done to the equipments</p>
-        <maintenance-management-component :maintenance="localMaintenance"></maintenance-management-component>
+
+    <div class="content p-3">
+      <div class="maintenance">
+        <h1 class="monitoring__title title">Equipment Monitoring</h1>
+        <p class="monitoring__info">Monitor and track equipment performance.</p>
+        <maintenance-management-component :monitoring="localMonitoring"
+                                        :selectedId="selectedId"/>
       </div>
-    </div>
   </div>
+  </div>
+
+
 </template>
 
 <style scoped>
-.maintenance__info {
+
+.monitoring__info {
   margin-top: 10px;
   margin-bottom: 25px;
+}
+.container{
+  margin-bottom: 20px;
+  margin-left:20px;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+
 }
 </style>

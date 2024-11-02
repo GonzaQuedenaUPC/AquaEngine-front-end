@@ -55,7 +55,6 @@ export default {
 </script>
 
 <template>
-
   <section class="w-full lg:-mt-8">
 
     <div class="container home pb-8 pt-5">
@@ -108,15 +107,28 @@ export default {
           </pv-card>
         </router-link>
 
+        <router-link to="/invoice-history" class="feature__item">
+          <pv-card class="feature__card">
+            <template #content>
+              <div class="feature__content">
+                <img src="../../assets/images/history.svg" alt="history-icon" class="feature__icon" />
+                <span>Historial de Facturas</span>
+              </div>
+            </template>
+          </pv-card>
+        </router-link>
+
       </div>
     </div>
   </section>
 
 
+
 </template>
 
-<style scoped>
 
+
+<style scoped>
 .features {
   @apply grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16;
 }

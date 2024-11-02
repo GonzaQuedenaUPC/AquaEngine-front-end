@@ -1,13 +1,15 @@
 <script>
 import InventoryManagementComponent from "../components/inventory-management.component.vue";
 import InventoryItemPopUpComponent from "../components/inventory-item-pop-up.component.vue";
+import InventoryFormPopUpComponent from "../components/inventory-form-pop-up.vue";
 
 export default {
   name: "inventory-view",
 
   components: {
     InventoryManagementComponent,
-    InventoryItemPopUpComponent
+    InventoryItemPopUpComponent,
+    InventoryFormPopUpComponent
   },
 
   props: {
@@ -22,7 +24,8 @@ export default {
       localInventory: [],
 
       selectedProduct: null,
-      isPopUpVisible: false
+      isPopUpVisible: false,
+      isPopUpFormVisible: false
     }
   },
 
@@ -33,12 +36,15 @@ export default {
     
     _handleItemSelected(item) {
       this.selectedProduct = item;
-      //console.log(this.selectedProduct);
     },
 
     _handlePopUpState(state) {
       this.isPopUpVisible = state;
-      //console.log(this.isPopUpVisible);
+    },
+
+    _handlePopUpFormState(state) {
+      console.log(state);
+      this.isPopUpFormVisible = state;
     }
   },
 
@@ -55,15 +61,23 @@ export default {
 <template>
   <section class="container">
 
-    <div class="pt-3">
+    <div class="p-3">
 
       <div class="inventory">
         <h1 class="inventory__title title">Inventory</h1>
         <p class="mb-4">Track the fluctuation of your products</p>
-        <inventory-management-component :inventory="localInventory" @item-selected="_handleItemSelected" @pop-up-state="_handlePopUpState"/>
+        <inventory-management-component :inventory="localInventory"
+                                        @item-selected="_handleItemSelected"
+                                        @pop-up-state="_handlePopUpState" @pop-up-form-state="_handlePopUpFormState"/>
       </div>
 
-      <inventory-item-pop-up-component v-if="selectedProduct !== null" :product="selectedProduct" :visible="isPopUpVisible" @pop-up-state="_handlePopUpState"/>
+      <inventory-item-pop-up-component v-if="selectedProduct !== null"
+                                       :product="selectedProduct"
+                                       :visible="isPopUpVisible" @pop-up-state="_handlePopUpState"/>
+
+      <inventory-form-pop-up-component v-if="isPopUpFormVisible"
+                                       :visible="isPopUpFormVisible" @pop-up-form-state="_handlePopUpFormState"/>
+
     </div>
 
   </section>
