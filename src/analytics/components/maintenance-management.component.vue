@@ -1,7 +1,8 @@
 <script>
 export default {
-  name: "maintenance-management",
-  props: {
+  name: "maintenance-management", 
+
+    props: {
     monitoring: {
       type: Array,
       required: true
@@ -11,6 +12,7 @@ export default {
       required: true
     }
   },
+  
   computed: {
     filteredMonitoring() {
       return this.monitoring.filter(item => item.id === this.selectedId);
@@ -18,6 +20,7 @@ export default {
     }
   }
 };
+
 </script>
 
 <template>
@@ -34,7 +37,9 @@ export default {
 </template>
 
 <style scoped>
+
 .maintenance__table {
+
   position: relative;
   z-index: 1;
 }
