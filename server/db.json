@@ -4,40 +4,80 @@
       "id": 1,
       "name": "John Doe",
       "email": "johndoe@gmail.com",
-      "ruc": "123456789"
-    }
-  ],
-  "products": [
-    {
-      "id": 1,
-      "name": "Product 1",
-      "price": 100,
-      "urlToImage": "https://via.placeholder.com/150"
+      "ruc": "123456789",
+      "inventory": [
+        {
+          "productId": "prod1",
+          "name": "Product 1",
+          "price": 100,
+          "stock": 10,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod2",
+          "name": "Product 2",
+          "price": 200,
+          "stock": 20,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod3",
+          "name": "Product 3",
+          "price": 300,
+          "stock": 30,
+          "urlToImage": "https://via.placeholder.com/150"
+        }
+      ]
     },
     {
       "id": 2,
-      "name": "Product 2",
-      "price": 200,
-      "urlToImage": "https://via.placeholder.com/150"
-    },
-    {
-      "id": 3,
-      "name": "Product 3",
-      "price": 300,
-      "urlToImage": "https://via.placeholder.com/150"
-    },
-    {
-      "id": 4,
-      "name": "Product 4",
-      "price": 400,
-      "urlToImage": "https://via.placeholder.com/150"
-    },
-    {
-      "id": 5,
-      "name": "Product 5",
-      "price": 500,
-      "stock": 10,
-      "urlToImage": "https://via.placeholder.com/150"
+      "name": "Michael Jackson",
+      "email": "michaeljackson@gmail.com",
+      "ruc": "987654321",
+      "inventory": [
+        {
+          "productId": "prod1",
+          "name": "Product 1",
+          "price": 400,
+          "stock": 40,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod2",
+          "name": "Product 2",
+          "price": 500,
+          "stock": 10,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod3",
+          "name": "Product 3",
+          "price": 600,
+          "stock": 60,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod4",
+          "name": "Product 4",
+          "price": 700,
+          "stock": 70,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod5",
+          "name": "Product 5",
+          "price": 800,
+          "stock": 80,
+          "urlToImage": "https://via.placeholder.com/150"
+        },
+        {
+          "productId": "prod6",
+          "name": "Product 6",
+          "price": 900,
+          "stock": 90,
+          "urlToImage": "https://via.placeholder.com/150"
+        }
+      ]
     }
   ],
   "companies": [
@@ -81,14 +121,108 @@
       "name": "Product 1",
       "urlToImage": "https://via.placeholder.com/150",
       "lastMaintenance": "20-09-2024",
-      "status": "active"
+      "status": "active",
+      "maintenance": [
+        {
+          "id": 101,
+          "date": "20-09-2024",
+          "technician": "John Doe",
+          "issueType": "Firmware Update",
+          "description": "Updated to firmware version 4.2.1 to address connectivity issues.",
+          "additionalInfo": "System rebooted and tested successfully."
+        },
+        {
+          "id": 102,
+          "date": "15-07-2024",
+          "technician": "Jane Smith",
+          "issueType": "Firmware Update",
+          "description": "Calibrated sensors for accurate readings.",
+          "additionalInfo": "No issues detected during calibration."
+        },
+        {
+          "id": 103,
+          "date": "02-05-2024",
+          "technician": "Michael Lee",
+          "issueType": "Power Supply Issue",
+          "description": "Replaced power supply unit after unexpected shutdowns.",
+          "additionalInfo": "System stable after replacement."
+        }
+      ]
     },
     {
       "id": 2,
       "name": "Product 2",
       "urlToImage": "https://via.placeholder.com/150",
       "lastMaintenance": "04-08-2024",
-      "status": "disabled"
+      "status": "disabled",
+      "maintenance": [
+        {
+          "id": 201,
+          "date": "04-08-2024",
+          "technician": "Jane Smith",
+          "issueType": "Hardware Replacement",
+          "description": "Replaced faulty power supply unit.",
+          "additionalInfo": "System is currently disabled awaiting further diagnostics."
+        },
+        {
+          "id": 202,
+          "date": "10-03-2024",
+          "technician": "John Doe",
+          "issueType": "Software Bug",
+          "description": "Fixed issue causing periodic crashes.",
+          "additionalInfo": "Applied patch and tested successfully."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "urlToImage": "https://via.placeholder.com/150",
+      "lastMaintenance": "15-09-2024",
+      "status": "in-maintenance",
+      "maintenance": [
+        {
+          "id": 301,
+          "date": "15-09-2024",
+          "technician": "Mike Johnson",
+          "issueType": "Preventive Maintenance",
+          "description": "Performed routine check-up and cleaned internal components.",
+          "additionalInfo": "No issues detected; system is operating normally."
+        },
+        {
+          "id": 302,
+          "date": "01-02-2024",
+          "technician": "Emily Davis",
+          "issueType": "Preventive Maintenance",
+          "description": "Replaced backup battery for uninterrupted operation.",
+          "additionalInfo": "Battery functioning correctly after replacement."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "urlToImage": "https://via.placeholder.com/150",
+      "lastMaintenance": "10-09-2024",
+      "status": "error",
+      "maintenance": [
+        {
+          "id": 401,
+          "date": "10-09-2024",
+          "technician": "Alex Brown",
+          "issueType": "Critical Error",
+          "description": "Detected critical error in the main controller unit.",
+          "additionalInfo": "The unit failed to start after the error. Needs replacement of controller unit and reprogramming."
+        },
+        {
+          "id": 402,
+          "date": "05-04-2024",
+          "technician": "David Green",
+          "issueType": "Network Configuration",
+          "description": "Reconfigured network settings to resolve connectivity issues.",
+          "additionalInfo": "Tested and verified network stability."
+        }
+      ]
     }
   ],
 
@@ -114,4 +248,5 @@
       "urlToImage": "https://via.placeholder.com/150"
     }
   ]
+
 }
