@@ -1,19 +1,13 @@
 <script>
 import OrderingMachineryComponent from "../components/ordering-machinery.component.vue";
 import {OrderingMachineryService} from "../services/ordering-machinery.service.js";
-import EventBus  from "../../shared/event-bus.js";
 
 export default {
   name: "ordering-machinery-view",
   components: {
     OrderingMachineryComponent
   },
-  props: {
-    ordering: {
-      type: Object,
-      required: true
-    }
-  },
+
   data(){
     return{
       localMonitoring: [],
@@ -33,7 +27,6 @@ export default {
   methods: {
     handleItemRequested(item) {
       this.selectedItem = item;
-      EventBus.emit('item-selected', this.selectedItem);
       console.log('Emitting event: item-selected', this.selectedItem);
     }
 
@@ -51,6 +44,9 @@ export default {
         <ordering-machinery-component :ordering="this.localMonitoring" @item-requested="handleItemRequested"></ordering-machinery-component>
       </div>
     </div>
+    <router-link to="/order-details" class="feature__item">
+      <button class="feature__card">Order Details</button>
+    </router-link>
   </div>
 </template>
 
