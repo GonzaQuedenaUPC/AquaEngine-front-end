@@ -55,9 +55,9 @@ export default {
 </script>
 
 <template>
-  <section class="w-full lg:-mt-8">
+  <section class="w-full mt-6 sm:mt-4 xl:-mt-4">
 
-    <div class="container home pb-8 pt-5">
+    <div class="container home pb-6 pt-5 px-4">
 
       <h2 class="home__title title mb-5">Select your service</h2>
 
@@ -130,7 +130,7 @@ export default {
 
 <style scoped>
 .features {
-  @apply grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16;
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-10 ;
 }
 
 .feature__item {
