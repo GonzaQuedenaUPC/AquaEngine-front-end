@@ -1,49 +1,52 @@
 <template>
-  <div class="invoicing-container">
-    <Toast />
-    <h1>Sistema de Facturación</h1>
+  <section class="container">
 
-    <div class="p-grid">
-      <div class="p-col-12">
-        <Card class="invoicing-card">
-          <template #title>
-            <h2>Nueva Factura</h2>
-          </template>
-          <template #content>
-            <form @submit.prevent="addInvoice">
-              <div class="p-fluid p-formgrid p-grid">
-                <div class="p-field p-col-12 p-md-6">
-                  <label for="customerName" class="p-d-block">Nombre del Cliente</label>
-                  <InputText id="customerName" v-model="newInvoice.customerName" required class="p-inputtext-sm" />
-                </div>
-                <div class="p-field p-col-12 p-md-6">
-                  <label for="productName" class="p-d-block">Nombre del Producto</label>
-                  <InputText id="productName" v-model="newInvoice.productName" required class="p-inputtext-sm" />
-                </div>
-                <div class="p-field p-col-12 p-md-6">
-                  <label for="quantity" class="p-d-block">Cantidad</label>
-                  <InputNumber id="quantity" v-model="newInvoice.quantity" :min="1" required class="p-inputtext-sm" />
-                </div>
-                <div class="p-field p-col-12 p-md-6">
-                  <label for="price" class="p-d-block">Precio Unitario</label>
-                  <InputNumber id="price" v-model="newInvoice.price" mode="currency" currency="PEN" locale="es-PE" :minFractionDigits="2" required class="p-inputtext-sm" />
-                </div>
-                <div class="p-col-12">
-                  <Button type="submit" label="Crear Factura" class="p-button-sm" />
-                </div>
+    <div class="invoicing-container">
+
+      <h1 class="title">Invoice System</h1>
+
+      <Button label="New Invoice" icon="pi pi-plus" class="p-button-success p-button-sm -mt-3 mb-3" @click="showDialog = true"/>
+
+      <Dialog header="New Invoice" :visible.sync="showDialog" :modal="true" :closable="false">
+
+        <div class="form flex flex-col gap-2">
+          <form @submit.prevent="addInvoice">
+            <div class="flex flex-col gap-3">
+
+              <div class="">
+                <InputText id="customerName" v-model="newInvoice.customerName" placeholder="Customer Name" required  class="w-full"/>
               </div>
-            </form>
-          </template>
-        </Card>
-      </div>
+
+              <div class="">
+                <InputText id="productName" v-model="newInvoice.productName" placeholder="Product Name" required class="w-full"/>
+              </div>
+
+              <div class="">
+                <InputNumber id="quantity" v-model="newInvoice.quantity" :min="1" placeholder="Quantity" required class="w-full"/>
+              </div>
+
+              <div class="">
+                <InputNumber id="price" v-model="newInvoice.price" mode="currency" currency="PEN" locale="es-PE" :minFractionDigits="2" placeholder="Unit Price" required class="w-full"/>
+              </div>
+
+            </div>
+          </form>
+
+          <div slot="footer" class="flex gap-3">
+            <Button label="Cancel" icon="pi pi-times" @click="showDialog = false" />
+            <Button label="Create Invoice" icon="pi pi-check" @click="addInvoice" />
+          </div>
+        </div>
+      </Dialog>
+
 
       <div class="p-col-12">
         <DataTable :value="invoices" :paginator="true" :rows="5" responsiveLayout="scroll" class="p-datatable-sm">
           <Column field="id" header="ID"></Column>
-          <Column field="customerName" header="Cliente"></Column>
-          <Column field="productName" header="Producto"></Column>
-          <Column field="quantity" header="Cantidad"></Column>
-          <Column field="price" header="Precio">
+          <Column field="customerName" header="Client"></Column>
+          <Column field="productName" header="Product"></Column>
+          <Column field="quantity" header="Quantity"></Column>
+          <Column field="price" header="Price">
             <template #body="slotProps">
               {{ formatCurrency(slotProps.data.price) }}
             </template>
@@ -65,17 +68,18 @@
           </Column>
         </DataTable>
       </div>
+
+      <ConfirmDialog></ConfirmDialog>
     </div>
 
-    <ConfirmDialog></ConfirmDialog>
-  </div>
+  </section>
 </template>
 
 <script>
-import {ref, onMounted} from 'vue';
-import {useInvoiceService} from '../services/Invoice.service.js';
-import {useToast} from 'primevue/usetoast';
-import {useConfirm} from 'primevue/useconfirm';
+import { ref, onMounted } from 'vue';
+import { useInvoiceService } from '../services/Invoice.service.js';
+import { useToast } from 'primevue/usetoast';
+import { useConfirm } from 'primevue/useconfirm';
 import Card from 'primevue/card';
 import InputText from 'primevue/inputtext';
 import InputNumber from 'primevue/inputnumber';
@@ -84,6 +88,7 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ConfirmDialog from 'primevue/confirmdialog';
 import Toast from 'primevue/toast';
+import Dialog from 'primevue/dialog';
 
 export default {
   components: {
@@ -94,7 +99,8 @@ export default {
     DataTable,
     Column,
     ConfirmDialog,
-    Toast
+    Toast,
+    Dialog
   },
   setup() {
     const invoiceService = useInvoiceService();
@@ -108,6 +114,7 @@ export default {
       quantity: 1,
       price: 0
     });
+    const showDialog = ref(false);
 
     const loadInvoices = () => {
       invoices.value = invoiceService.getInvoices();
@@ -115,14 +122,10 @@ export default {
 
     const addInvoice = () => {
       invoiceService.addInvoice(newInvoice.value);
-      toast.add({severity: 'success', summary: 'Éxito', detail: 'Factura creada', life: 3000});
-      newInvoice.value = {
-        customerName: '',
-        productName: '',
-        quantity: 1,
-        price: 0
-      };
+      toast.add({ severity: 'success', summary: 'Éxito', detail: 'Factura creada', life: 3000 });
+      newInvoice.value = { customerName: '', productName: '', quantity: 1, price: 0 };
       loadInvoices();
+      showDialog.value = false;
     };
 
     const confirmDeleteInvoice = (invoice) => {
@@ -132,14 +135,14 @@ export default {
         icon: 'pi pi-exclamation-triangle',
         accept: () => {
           invoiceService.deleteInvoice(invoice.id);
-          toast.add({severity: 'success', summary: 'Éxito', detail: 'Factura eliminada', life: 3000});
+          toast.add({ severity: 'success', summary: 'Éxito', detail: 'Factura eliminada', life: 3000 });
           loadInvoices();
         }
       });
     };
 
     const formatCurrency = (value) => {
-      return new Intl.NumberFormat('es-PE', {style: 'currency', currency: 'PEN'}).format(value);
+      return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value);
     };
 
     const formatDate = (value) => {
@@ -156,119 +159,13 @@ export default {
       addInvoice,
       confirmDeleteInvoice,
       formatCurrency,
-      formatDate
+      formatDate,
+      showDialog
     };
   }
 }
 </script>
 
 <style scoped>
-.invoicing-container {
-  background-color: #1e1e1e;
-  color: #ffffff;
-  padding: 2rem;
-}
 
-h1 {
-  color: #6495ED;
-  margin-bottom: 2rem;
-}
-
-h2 {
-  color: #6495ED;
-  margin-bottom: 1rem;
-}
-
-.invoicing-card {
-  background-color: #2a2a2a;
-  color: #ffffff;
-  margin-bottom: 2rem;
-}
-
-:deep(.p-card) {
-  background-color: #2a2a2a;
-  color: #ffffff;
-}
-
-:deep(.p-card .p-card-title) {
-  color: #6495ED;
-}
-
-:deep(.p-inputtext),
-:deep(.p-inputnumber-input) {
-  background-color: #3a3a3a;
-  color: #ffffff;
-  border-color: #6495ED;
-  width: 80%;
-}
-
-:deep(.p-inputnumber) {
-  width: 20%;
-}
-
-:deep(.p-button) {
-  background-color: #6495ED;
-  border-color: #6495ED;
-}
-
-:deep(.p-datatable) {
-  background-color: #2a2a2a;
-  color: #ffffff;
-}
-
-:deep(.p-datatable .p-datatable-header) {
-  background-color: #3a3a3a;
-  color: #ffffff;
-}
-
-:deep(.p-datatable .p-datatable-thead > tr > th) {
-  background-color: #3a3a3a;
-  color: #ffffff;
-}
-
-:deep(.p-datatable .p-datatable-tbody > tr) {
-  background-color: #2a2a2a;
-  color: #ffffff;
-}
-
-:deep(.p-datatable .p-datatable-tbody > tr:nth-child(even)) {
-  background-color: #3a3a3a;
-}
-
-:deep(.p-paginator) {
-  background-color: #2a2a2a;
-  color: #ffffff;
-}
-
-:deep(.p-confirm-dialog) {
-  background-color: #2a2a2a;
-  color: #ffffff;
-}
-
-:deep(.p-dialog-title) {
-  color: #6495ED;
-}
-
-:deep(.p-dialog-content) {
-  background-color: #2a2a2a;
-  color: #ffffff;
-}
-
-:deep(.p-dialog-footer) {
-  background-color: #2a2a2a;
-}
-
-.p-field {
-  margin-bottom: 1rem;
-}
-
-.p-field label {
-  margin-bottom: 0.5rem;
-  display: block;
-}
-
-.p-inputtext-sm {
-  font-size: 0.875rem;
-  padding: 0.4rem 0.5rem;
-}
 </style>

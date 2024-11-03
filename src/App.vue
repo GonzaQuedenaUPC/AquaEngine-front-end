@@ -5,7 +5,6 @@ export default {
   components: {
     toolbarContent
   },
-
   data() {
     return {
       profile: {},
@@ -30,8 +29,8 @@ export default {
     }
   }
 }
-</script>
 
+</script>
 <template>
   <div class="app__container h-screen flex flex-col lg:overflow-hidden">
     <header class="header">

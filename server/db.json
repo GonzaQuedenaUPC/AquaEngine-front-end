@@ -224,6 +224,29 @@
         }
       ]
     }
+  ],
+
+  "ordering-machinery": [
+    {
+      "id": 1,
+      "name": "Machine 1",
+      "urlToImage": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "name": "Machine 2",
+      "urlToImage": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 3,
+      "name": "Machine 3",
+      "urlToImage": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 4,
+      "name": "Machine 4",
+      "urlToImage": "https://via.placeholder.com/150"
+    }
   ]
 
 }
