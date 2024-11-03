@@ -9,6 +9,12 @@ export default {
     }
   },
 
+  data() {
+    return {
+      filterTerm: ''
+    }
+  },
+
   methods: {
     _emitItemSelected(item) {
       this.$emit('item-selected', item);
@@ -34,6 +40,12 @@ export default {
 <template>
   <div class="inventory container w-full">
     <div class="inventory__content w-full flex justify-center flex-column gap-3">
+
+      <div class="filter__container w-full flex justify-end">
+        <input type="text" v-model="filterTerm" placeholder="Filter by name"
+               class="filter__input border px-2 py-1 rounded-full"
+               style="width: 200px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);">
+      </div>
 
       <div class="table-container overflow-auto" style="max-height: 400px; width: 100%; padding: 16px;">
         <pv-data-table :value="inventory" paginator :rows="8" tableStyle="min-width: 50rem">
