@@ -1,19 +1,18 @@
 <script>
 import OrderingMachineryComponent from "../components/ordering-machinery.component.vue";
-import {OrderingMachineryService} from "../services/ordering-machinery.service.js";
+import { OrderingMachineryService } from "../services/ordering-machinery.service.js";
 
 export default {
   name: "ordering-machinery-view",
   components: {
-    OrderingMachineryComponent
+    OrderingMachineryComponent,
   },
-
-  data(){
-    return{
+  data() {
+    return {
       localMonitoring: [],
       orderingService: new OrderingMachineryService(),
-      selectedItem: null
-    }
+      selectedItem: null,
+    };
   },
   async created() {
     try {
@@ -21,65 +20,45 @@ export default {
       this.localMonitoring = response.data;
       console.log(this.localMonitoring);
     } catch (error) {
-      console.error('Failed to load ordering data: ', error);
+      console.error("Failed to load ordering data: ", error);
     }
   },
   methods: {
     handleItemRequested(item) {
       this.selectedItem = item;
-      console.log('Emitting event: item-selected', this.selectedItem);
-    }
-
-  }
-
+      console.log("Emitting event: item-selected", this.selectedItem);
+    },
+  },
 };
 </script>
 
 <template>
-  <div class="container">
-    <div class="content">
-      <div class="ordering-machinery">
-        <h1 class="ordering-machinery__title">Ordering Machinery</h1>
-        <p class="ordering-machinery__info">Access the ordering system to request and track machinery.</p>
-        <ordering-machinery-component :ordering="this.localMonitoring" @item-requested="handleItemRequested"></ordering-machinery-component>
+  <section class="container md:-mt-16">
+    <div class="ordering-machinery p-2">
+      <div class="header flex items-center justify-between">
+        <!-- Título -->
+        <h1 class="ordering-machinery__title title">Ordering Machinery</h1>
+
+        <router-link to="/order-detail">
+          <pv-button label="Orden Detail"/>
+        </router-link>
       </div>
+      <p class="ordering-machinery__info -mt-4 mb-3">
+        Access the ordering system to request and track machinery.
+      </p>
+      <ordering-machinery-component :ordering="localMonitoring" @item-requested="handleItemRequested" />
     </div>
-    <router-link to="/order-details" class="feature__item">
-      <button class="feature__card">Order Details</button>
-    </router-link>
-  </div>
+  </section>
 </template>
 
 <style scoped>
-.container {
+
+.header {
   display: flex;
-  justify-content: center;
-  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
-.content {
-  max-width: 1200px;
-  width: 100%;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-.ordering-machinery {
-  text-align: center;
-}
-
-.ordering-machinery__title {
-  font-size: 2em;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.ordering-machinery__info {
-  font-size: 1.2em;
-  color: #555;
-  margin-bottom: 20px;
-  line-height: 1.5;
-}
 </style>

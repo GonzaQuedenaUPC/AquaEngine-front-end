@@ -66,16 +66,4 @@ export default {
 
 <style scoped>
 
-.container {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  background: green;
-}
-
-.machine__image {
-  width: 100px;
-  height: auto;
-}
-
 </style>
