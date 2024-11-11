@@ -56,8 +56,8 @@ const togglePassword = () => {
 
     <div class="text-center text-gray-600 text-sm">
       <p>You already have an account?
-        <router-link to="#" class="hover:underline">
-          <span class="font-semibold  text-black">Sign Up</span></router-link>
+        <router-link to="/register" class="hover:underline">
+          <span class="font-semibold text-black">Sign Up</span></router-link>
       </p>
 
     </div>

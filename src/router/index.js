@@ -59,6 +59,12 @@ const routes = [
         component: () => import('../auth/pages/login-view.component.vue'),
         meta: { title: 'Sign In', showToolbar: false }
     },
+    {
+        path: '/register',
+        name: 'register',
+        component: () => import('../auth/pages/register-view.component.vue'),
+        meta: { title: 'Sign Up', showToolbar: false }
+    },
 
     { path: '/', redirect: '/login' }
 ];
