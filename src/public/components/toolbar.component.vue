@@ -16,7 +16,7 @@ export default {
     <pv-toolbar class="toolbar">
       <template #start>
         <div class="toolbar__logo">
-          <router-link to="/">
+          <router-link to="/home">
             <img src="../../assets/images/aqua-engine-logo.svg" alt="aqua-engine-logo">
           </router-link>
         </div>

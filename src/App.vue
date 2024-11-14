@@ -31,14 +31,15 @@ export default {
 }
 
 </script>
+
 <template>
   <div class="app__container h-screen flex flex-col lg:overflow-hidden">
-    <header class="header">
-      <toolbar-content :profile="this.profile"/>
+    <header v-if="$route.meta.showToolbar" class="header">
+      <toolbar-content :profile="profile"/>
     </header>
 
-    <main class="main mt-4 md:mt-5 h-full flex flex-col items-center justify-center">
-      <router-view @profile-selected="onProfileLoaded" @profile-loaded="onProfileLoaded" :inventory="this.inventory"/>
+    <main class="main  h-full flex flex-col items-center justify-center">
+      <router-view @profile-selected="onProfileLoaded" @profile-loaded="onProfileLoaded" :inventory="inventory"/>
     </main>
   </div>
 </template>
