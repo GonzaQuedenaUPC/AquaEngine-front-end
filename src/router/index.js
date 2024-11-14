@@ -56,13 +56,13 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        component: () => import('../auth/pages/login-view.component.vue'),
+        component: () => import('../iam/pages/login-view.component.vue'),
         meta: { title: 'Sign In', showToolbar: false }
     },
     {
         path: '/register',
         name: 'register',
-        component: () => import('../auth/pages/register-view.component.vue'),
+        component: () => import('../iam/pages/register-view.component.vue'),
         meta: { title: 'Sign Up', showToolbar: false }
     },
 
