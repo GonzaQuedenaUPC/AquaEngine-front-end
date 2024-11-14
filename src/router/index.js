@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { authenticationGuard} from "../iam/services/authentication.guard.js";
 
 //definir metas comunes
 const defaultMeta = { showToolbar: true };
@@ -54,19 +55,19 @@ const routes = [
         meta: { ...defaultMeta, title: 'Order Detail' }
     },
     {
-        path: '/login',
-        name: 'login',
-        component: () => import('../iam/pages/login-view.component.vue'),
+        path: '/sign-in',
+        name: 'sign-in',
+        component: () => import('../iam/pages/sign-in-view.component.vue'),
         meta: { title: 'Sign In', showToolbar: false }
     },
     {
-        path: '/register',
-        name: 'register',
-        component: () => import('../iam/pages/register-view.component.vue'),
+        path: '/sign-up',
+        name: 'sign-up',
+        component: () => import('../iam/pages/sign-up-view.component.vue'),
         meta: { title: 'Sign Up', showToolbar: false }
     },
 
-    { path: '/', redirect: '/login' }
+    { path: '/', redirect: '/sign-in' }
 ];
 
 const router = createRouter({
@@ -75,9 +76,11 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+    // Set the page title
     const baseTitle = 'AquaEngine';
     document.title = `${baseTitle} | ${to.meta.title}`;
-    next();
+    // Call the authentication guard
+    authenticationGuard(to, from, next);
 });
 
 export default router;
