@@ -1,5 +1,7 @@
 <script setup>
-import { ref } from 'vue'
+import {ref} from 'vue'
+import {SignInRequest} from "../model/sign-in.request.js"
+import {useAuthenticationStore} from "../services/authentication.store.js"
 
 defineOptions({
   name: 'login-form'
@@ -9,19 +11,21 @@ const email = ref('');
 const password = ref('');
 const showPassword = ref(false);
 
+// Obtén el store de autenticación
+const authenticationStore = useAuthenticationStore();
+
 const onSubmit = () => {
-  console.log(email);
-  console.log(password);
+  const signInRequest = new SignInRequest(email.value, password.value);
+  authenticationStore.signIn(signInRequest, this.$router);
 }
 
 const togglePassword = () => {
   showPassword.value = !showPassword.value;
 }
-
 </script>
 
 <template>
-  <form class="bg-white p-8 rounded-lg shadow-lg " v-on:submit.prevent="onSubmit">
+  <form class="bg-white p-8 rounded-lg shadow-lg" v-on:submit.prevent="onSubmit">
     <h1 class="text-xl font-bold text-center mb-6">
       Welcome to <span class="text-[#8298E7]">AquaEngine</span>
     </h1>
@@ -51,19 +55,19 @@ const togglePassword = () => {
 
     <div class="mb-4">
       <button type="submit" class="w-full bg-black text-white py-2 rounded-lg
-        hover:bg-[#8298E7] focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">Sign In</button>
+        hover:bg-[#8298E7] focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">Sign In
+      </button>
     </div>
 
     <div class="text-center text-gray-600 text-sm">
       <p>You already have an account?
         <router-link to="/register" class="hover:underline">
-          <span class="font-semibold text-black">Sign Up</span></router-link>
+          <span class="font-semibold text-black">Sign Up</span>
+        </router-link>
       </p>
-
     </div>
   </form>
 </template>
 
 <style scoped>
-
 </style>
