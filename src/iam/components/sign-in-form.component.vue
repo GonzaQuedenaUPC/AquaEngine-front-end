@@ -4,7 +4,7 @@ import {SignInRequest} from "../model/sign-in.request.js"
 import {useAuthenticationStore} from "../services/authentication.store.js"
 
 defineOptions({
-  name: 'login-form'
+  name: 'sign-in-form'
 });
 
 const email = ref('');

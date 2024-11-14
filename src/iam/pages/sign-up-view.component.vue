@@ -1,8 +1,8 @@
 <script setup>
-import RegisterForm from '../components/register-form.component.vue'
+import RegisterForm from '../components/sign-up-form.component.vue'
 
 defineOptions({
-  name: 'register-view'
+  name: 'sign-up-view'
 })
 
 </script>

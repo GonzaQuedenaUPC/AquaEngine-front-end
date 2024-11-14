@@ -5,7 +5,7 @@ import { useAuthenticationStore } from '../services/authentication.store.js'
 import { SignUpRequest } from '../model/sign-up.request.js'
 
 defineOptions({
-  name: 'register-form'
+  name: 'sign-up-form'
 });
 
 const router = useRouter();

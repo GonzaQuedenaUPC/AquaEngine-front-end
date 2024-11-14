@@ -1,9 +1,9 @@
 <script setup>
 
-import LoginForm from '../components/login-form.component.vue'
+import LoginForm from '../components/sign-in-form.component.vue'
 
 defineOptions({
-  name: 'login-view'
+  name: 'sign-in-view'
 });
 
 </script>
