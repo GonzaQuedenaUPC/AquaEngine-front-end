@@ -46,7 +46,11 @@ const app = createApp(App);
 // Use i18n
 import i18n from "./i18n.js";
 
+// Use router
 import router from "./router/index.js";
+
+// Use pinia
+import { createPinia } from 'pinia'
 
 //set PrimeVUe configuration
 app.use(PrimeVue, { theme: { preset: Aura }, ripple: true })
@@ -58,6 +62,9 @@ app.use(PrimeVue, { theme: { preset: Aura }, ripple: true })
 app.use(i18n);
 //setting up router configuration
 app.use(router);
+//setting up pinia configuration
+const pinia = createPinia();
+app.use(pinia);
 
 //using PrimeVue Components
 app.component('pv-button', Button)
