@@ -1,12 +1,15 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { useAuthenticationStore } from '../services/authentication.store.js'
+import { SignUpRequest } from '../model/sign-up.request.js'
 
 defineOptions({
   name: 'register-form'
 });
 
 const router = useRouter();
+const authenticationStore = useAuthenticationStore();
 
 const fullName = ref('');
 const email = ref('');
@@ -26,7 +29,10 @@ const passwordsMatch = computed(() => {
 });
 
 const onSubmit = () => {
-  // TO-DO: Implement form submission
+  if (isEmailValid.value && passwordsMatch.value) {
+    const signUpRequest = new SignUpRequest(email.value, password.value);
+    authenticationStore.signUp(signUpRequest, this.$router);
+  }
 }
 </script>
 
@@ -60,8 +66,9 @@ const onSubmit = () => {
     </div>
 
     <button type="submit" class="w-full bg-black text-white py-2 rounded-lg hover:bg-[#8298E7] focus:outline-none
-      focus:ring-2 focus:ring-black
-        focus:ring-opacity-50 cursor-pointer" :disabled="!isEmailValid || !passwordsMatch">Sign Up</button>
+      focus:ring-2 focus:ring-black focus:ring-opacity-50 cursor-pointer"
+            :disabled="!isEmailValid || !passwordsMatch">Sign Up
+    </button>
   </form>
 </template>
 
