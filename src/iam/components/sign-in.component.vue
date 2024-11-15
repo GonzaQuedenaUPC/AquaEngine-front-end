@@ -33,9 +33,9 @@ export default {
           <div class="p-fluid">
             <div class="field mt-5">
               <pv-float-label>
-                <label for="username">Username</label>
+                <label for="username">Email</label>
                 <pv-input-text id="username" v-model="username" :class="{'p-invalid': !username }"/>
-                <small v-if="!username" class="p-invalid">Username is required.</small>
+                <small v-if="!username" class="p-invalid">Email is required.</small>
               </pv-float-label>
             </div>
             <div class="field mt-5">
@@ -85,7 +85,9 @@ export default {
   align-items: center;
   padding: 0 20px;
 }
-
+.p-invalid{
+  margin-right: 20px;
+}
 .title {
   font-size: 60px;
 }
@@ -94,6 +96,7 @@ export default {
   flex: 1;
   display: flex;
 }
+
 
 .cover-image {
   width: 100%;

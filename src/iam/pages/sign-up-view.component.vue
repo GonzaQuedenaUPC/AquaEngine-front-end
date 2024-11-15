@@ -8,10 +8,10 @@ export default {
 </script>
 
 <template>
-
+  <sign-up></sign-up>
 </template>
 
-<sign-up></sign-up>
+
 
 <style scoped>
 
