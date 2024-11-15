@@ -35,7 +35,8 @@ export default {
 <template>
   <div>
     <div class="header" v-if="isSignedIn">
-      <h2 class="username"> Welcome, {{ currentUsername }}</h2> <pv-button text @click="onSignOut">Sign Out</pv-button>
+      <h2 class="username"> Welcome, {{ currentUsername }}</h2>
+      <pv-button class="sign-out__button" text @click="onSignOut">Sign Out</pv-button>
     </div>
   </div>
 </template>
@@ -47,5 +48,11 @@ export default {
 .header{
   display: flex;
   flex-direction: row;
+}
+.sign-out__button {
+  margin-left: 50px;
+  font-size: 20px;
+  color: white;
+  padding: 10px;
 }
 </style>

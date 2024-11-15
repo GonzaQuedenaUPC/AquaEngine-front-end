@@ -53,7 +53,7 @@ export default {
             </div>
 
             <div class="text-center text-gray-600 text-sm">
-              <p>You already have an account?
+              <p>Already have an account?
                 <router-link to="/sign-up" class="hover:underline">
                   <span class="font-semibold ">Sign Up</span>
                 </router-link>

@@ -44,9 +44,19 @@ export default {
           </pv-float-label>
         </div>
         <div class="p-field mt-5">
-          <pv-button type="submit">Sign Up</pv-button>
-          <div class="sign-in__sign-up__spacer"></div>
-          <router-link to="/sign-in"><span>Already Have an account? Sign in</span></router-link>
+          <div class="mb-4">
+            <button type="submit" class="w-full bg-black text-white py-2 rounded-lg
+            hover:bg-[#8298E7] focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">Sign In
+            </button>
+          </div>
+
+          <div class="text-center text-gray-600 text-sm">
+            <p>Already have an account?
+              <router-link to="/sign-in" class="hover:underline">
+                <span class="font-semibold ">Sign Up</span>
+              </router-link>
+            </p>
+          </div>
         </div>
       </div>
     </form>
@@ -56,9 +66,6 @@ export default {
 <style scoped>
 .title{
   font-size: 60px;
-}
-.sign-in__sign-up__spacer{
-  margin-right: 20px;
 }
 
 
