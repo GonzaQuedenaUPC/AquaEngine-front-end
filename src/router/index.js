@@ -24,11 +24,9 @@ const routes = [
         meta: { ...defaultMeta, title: 'Home' }
     },
     {
-        path: '/monitoring/:id/maintenance',
-        name: 'maintenance-view',
-        component: () => import('../analytics/pages/maintenance-view.component.vue'),
-        props: true,
-        meta: { showToolbar: true, title: 'Maintenance' }
+        path: '/maintenance',
+        name: 'maintenance',
+        component:()=>import ('../analytics/pages/maintenance-view.component.vue')
     },
     {
         path: '/invoicing',

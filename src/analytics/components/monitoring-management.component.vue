@@ -23,7 +23,7 @@ export default {
             <p><strong>Status:</strong> {{ item.status }}</p>
           </template>
           <template #footer>
-            <router-link :to="`/maintenances/${item.id}/`">
+            <router-link :to="`/maintenance`">
               <pv-button label="Maintenance Logs" severity="success" class="logs__button"/>
             </router-link>
           </template>

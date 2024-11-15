@@ -1,57 +1,42 @@
 <script>
 import MaintenanceManagementComponent from "../components/maintenance-management.component.vue";
-import MaintenanceChartComponent from "../components/maintenance-chart.component.vue";
-import { MonitoringService } from "../services/monitoring.service.js";
-
 export default {
   name: "MaintenanceView",
-  components: {
-    MaintenanceManagementComponent,
-    MaintenanceChartComponent
+  components:{
+    MaintenanceManagementComponent
   },
-  data() {
-    return {
-      localMonitoring: [],
-      selectedId: null,
-      monitoringService: new MonitoringService()
-    };
+  props:{
+
   },
-  async created() {
-    try {
-      const response = await this.monitoringService.getAll();
-      this.localMonitoring = response.data;
-      this.selectedId = parseInt(this.$route.params.id, 10);
-      console.log(this.selectedId);
-      console.log(this.localMonitoring);
-    } catch (error) {
-      console.error('Failed to load monitoring data:', error);
+  data(){
+    return{
+      localMaintenance:[]
     }
+  },
+  created() {
+
   }
 };
 </script>
 
 <template>
-  <div class="container">
+<section class="container">
+  <div class="p-3">
+    <div class="maintenance__tittle"><h1 class="maintenance__title__h1">Maintenance Logs</h1></div>
+    <p class="mb-4">Track the logs of your machines</p>
+    <maintenance-management-component :maintenance="localMaintenance" selected-id="1">
 
-    <div class="content p-3">
-      <div class="maintenance">
-        <h1 class="monitoring__title title">Equipment Monitoring</h1>
-        <p class="monitoring__info">Monitor and track equipment performance.</p>
-        <maintenance-management-component :monitoring="localMonitoring"
-                                        :selectedId="selectedId"/>
-      </div>
+    </maintenance-management-component>
   </div>
-  </div>
-
+</section>
 
 </template>
 
 <style scoped>
-
-.monitoring__info {
-  margin-top: 10px;
-  margin-bottom: 25px;
+.maintenance__title__h1{
+  font-size: 40px;
 }
+
 .container{
   margin-bottom: 20px;
   margin-left:20px;

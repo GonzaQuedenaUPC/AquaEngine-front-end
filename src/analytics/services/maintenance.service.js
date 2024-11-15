@@ -6,4 +6,7 @@ export class MaintenanceService {
     getAll() {
         return http.get(this._resourceEndpoint).then(response => response.data);
     }
+    getById(id) {
+        return http.get(`${this._resourceEndpoint}/${id}`).then(response => response.data);
+    }
 }

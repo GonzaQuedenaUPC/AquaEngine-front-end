@@ -1,9 +1,10 @@
 <script>
+
 export default {
-  name: "maintenance-management", 
+  name: "maintenance-management",
 
     props: {
-    monitoring: {
+    maintenance: {
       type: Array,
       required: true
     },
@@ -12,11 +13,14 @@ export default {
       required: true
     }
   },
-  
-  computed: {
-    filteredMonitoring() {
-      return this.monitoring.filter(item => item.id === this.selectedId);
-      console.log(this.filteredMonitoring[0]?.maintenance || [])
+  data(){
+    return{
+      filteredMaintenance:''
+    }
+  },
+  methods:{
+    _emitSelectetIdtem(selectedId){
+      this.$emit('selected-item', selectedId);
     }
   }
 };
@@ -24,10 +28,11 @@ export default {
 </script>
 
 <template>
-  <pv-data-table :value="filteredMonitoring[0]?.maintenance || []" paginator :rows="5" table-style="min-width:50rem"
+  <pv-data-table :value=" maintenance" paginator :rows="5" table-style="min-width:50rem"
                  class="maintenance__table">
     <pv-column field="id" header="ID" style="width: 10%"></pv-column>
-    <pv-column field="date" header="Date" style="width: 15%"></pv-column>
+    <pv-column field="monitoredMachineId" header="MachineId" style="width: 10%"></pv-column>
+    <pv-column field="updatedDate" header="Date" style="width: 15%"></pv-column>
     <pv-column field="technician" header="Technician" style="width: 15%"></pv-column>
     <pv-column field="issueType" header="Issue Type" style="width: 20%"></pv-column>
     <pv-column field="description" header="Description" style="width: 20%"></pv-column>
