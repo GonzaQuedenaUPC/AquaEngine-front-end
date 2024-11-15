@@ -26,13 +26,27 @@ export default {
     },
 
     emitData(item) {
-      this._emitPopUpState();
-      this._emitItemSelected(item);
+      this._emitPopUpState(item);
     },
 
     emitPopUpFormState() {
-      this.$emit('pop-up-form-state', true);
+      this.$emit('pop-up-form-state', true); // Emitiendo el verdadero para mostrar el form
     },
+
+    handleProductSubmit(newProduct) {
+      this.$emit('new-product-submitted', newProduct);
+    }
+  },
+
+  computed: {
+    filteredInventory() {
+      if (!this.filterTerm) {
+        return this.inventory;
+      }
+      return this.inventory.filter(item =>
+          item.name.toLowerCase().includes(this.filterTerm.toLowerCase())
+      );
+    }
   }
 }
 </script>
@@ -48,11 +62,11 @@ export default {
       </div>
 
       <div class="table-container overflow-auto" style="max-height: 400px; width: 100%; padding: 16px;">
-        <pv-data-table :value="inventory" paginator :rows="8" tableStyle="min-width: 50rem">
+        <pv-data-table :value="filteredInventory" paginator :rows="8" tableStyle="min-width: 50rem">
 
-          <pv-column class="w-[10%] md:w-[25%]" field="productId" header="ID"></pv-column>
+          <pv-column class="w-[10%] md:w-[25%]" field="id" header="ID"></pv-column>
           <pv-column class="w-[10%] md:w-[25%]" field="name" header="Name"></pv-column>
-          <pv-column class="w-[10%] md:w-[25%]" field="stock" header="Stock"></pv-column>
+          <pv-column class="w-[10%] md:w-[25%]" field="quantity" header="Stock"></pv-column>
 
           <pv-column field="representative.name" header="" style="width: 25%">
             <template #body="slotProps">
