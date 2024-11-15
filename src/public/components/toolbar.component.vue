@@ -1,6 +1,9 @@
 <script>
+import AuthenticationSection from "../../iam/components/authentication-section.component.vue";
+
 export default {
   name: "toolbar-content",
+  components: {AuthenticationSection},
 
   props: {
     profile: {
@@ -23,39 +26,7 @@ export default {
       </template>
 
       <template #end>
-
-        <ul class="dropdown__main">
-          <li class="dropdown__list dropdown__user--main">
-            <a href="#" class="dropdown__link">
-              <img src="../../assets/images/user.svg" class="nav__icon" alt="user-icon"/>
-              <span class="dropdown__span dropdown__span--user">{{ profile.name || profile._name }}</span>
-            </a>
-          </li>
-        </ul>
-
-        <a href="#menu" class="nav__menu">
-          <img src="../../assets/images/menu.svg" class="nav__icon" alt="menu-icon"/>
-        </a>
-        <a href="#" class="nav__menu nav__menu--second">
-          <img src="../../assets/images/close.svg" class="nav__icon" alt="menu-icon"/>
-        </a>
-
-        <ul class="dropdown__menu" id="menu">
-          <li class="dropdown__list dropdown__user--menu">
-            <a href="#" class="dropdown__link">
-              <img src="../../assets/images/user.svg" class="nav__icon nav__icon--user" alt="user-icon"/>
-              <span class="dropdown__span dropdown__span--user">{{ profile.name || profile._name }}</span>
-            </a>
-          </li>
-
-          <li class="dropdown__list dropdown__list--close">
-            <a href="#" class="dropdown__link">
-              <img src="../../assets/images/user-close.svg" class="nav__icon" alt="user-icon"/>
-              <span class="dropdown__span dropdown__span--menu">Close Profile</span>
-            </a>
-          </li>
-        </ul>
-
+        <authentication-section></authentication-section>
       </template>
 
     </pv-toolbar>
