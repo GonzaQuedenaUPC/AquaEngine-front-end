@@ -1,6 +1,6 @@
 <script>
-import { MonitoringService } from '../services/monitoring.service.js';
-//A
+import { MaintenanceService } from '../services/maintenance.service.js';
+
 export default {
   name: 'maintenance-chart',
   data() {
@@ -31,8 +31,8 @@ export default {
     };
   },
   created() {
-    const monitoringService = new MonitoringService();
-    monitoringService.getMaintenance()
+    const service = new MaintenanceService();
+    service.getAll()
         .then(data => {
           this.maintenanceData = data;
           this.populateChartData();
@@ -45,14 +45,12 @@ export default {
     populateChartData() {
       const issueTypeCount = {};
       this.maintenanceData.forEach(task => {
-        task.maintenance.forEach(maintenanceTask => {
-          const issueType = maintenanceTask.issueType;
-          if (issueTypeCount[issueType]) {
-            issueTypeCount[issueType]++;
-          } else {
-            issueTypeCount[issueType] = 1;
-          }
-        });
+        const issueType = task.issueType;
+        if (issueTypeCount[issueType]) {
+          issueTypeCount[issueType]++;
+        } else {
+          issueTypeCount[issueType] = 1;
+        }
       });
       this.chartData.labels = Object.keys(issueTypeCount);
       this.chartData.datasets[0].data = Object.values(issueTypeCount);
@@ -60,10 +58,11 @@ export default {
   }
 };
 </script>
+
 <template>
   <div>
     <h1>Maintenance Chart</h1>
-    <pv-chart type="bar" :data="chartData" :options="chartOptions" />
+    <pv-chart type="bar" :data="chartData" :options="chartOptions"/>
   </div>
 </template>
 
