@@ -17,6 +17,7 @@ export class AuthenticationService {
     signIn(signInRequest) {
         return http.post("/authentication/sign-in", signInRequest);
     }
+
     /**
      * Sign up
      * @summary

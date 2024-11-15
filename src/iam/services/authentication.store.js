@@ -2,6 +2,7 @@ import {defineStore} from "pinia";
 import {AuthenticationService} from "./authentication.service.js";
 import {SignInResponse} from "../model/sign-in.response.js";
 import {SignUpResponse} from "../model/sign-up.response.js";
+
 const authenticationService = new AuthenticationService();
 /**
  * Authentication Store

@@ -1,4 +1,5 @@
 import {useAuthenticationStore} from "./authentication.store.js";
+
 /**
  * Interceptor to add authentication token to the request header
  * @summary

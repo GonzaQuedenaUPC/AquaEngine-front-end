@@ -15,4 +15,5 @@ export class SignInResponse {
         this.username = username;
         this.token = token;
     }
+
 }
