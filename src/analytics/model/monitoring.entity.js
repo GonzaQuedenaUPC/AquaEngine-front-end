@@ -2,13 +2,12 @@ import Maintenance from './maintenance.entity.js';
 
 class Monitoring{
 
-    constructor({id='',name='',urlToImage='',lastMaintenance='',status='',maintenance=Maintenance}) {
+    constructor({id='',name='',urlToImage='',status=''}) {
     this._id = id;
     this._name = name;
     this._urlToImage = urlToImage;
-    this._lastMaintenance = lastMaintenance;
     this._status = status;
-    this._maintenance = maintenance;
+
 }
 
     get id() {
@@ -31,9 +30,6 @@ class Monitoring{
         return this._status;
     }
 
-    get maintenance() {
-        return this._maintenance;
-    }
 
 }
 

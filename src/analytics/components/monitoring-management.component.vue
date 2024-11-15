@@ -20,11 +20,10 @@ export default {
           </template>
           <template #content>
             <p><strong>Name:</strong> {{ item.name }}</p>
-            <p><strong>Last Maintenance Date:</strong> {{ item.lastMaintenance }}</p>
             <p><strong>Status:</strong> {{ item.status }}</p>
           </template>
           <template #footer>
-            <router-link :to="`/monitoring/${item.id}/maintenance/`">
+            <router-link :to="`/maintenances/${item.id}/`">
               <pv-button label="Maintenance Logs" severity="success" class="logs__button"/>
             </router-link>
           </template>

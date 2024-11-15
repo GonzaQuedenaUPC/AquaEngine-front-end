@@ -2,6 +2,7 @@
 import MonitoringManagementComponent from "../components/monitoring-management.component.vue";
 import { MonitoringService } from "../services/monitoring.service.js";
 import MaintenanceChartComponent from "../components/maintenance-chart.component.vue";
+import {MaintenanceService} from "../services/maintenance.service.js";
 
 export default {
   name: "MonitoringView",
@@ -18,6 +19,7 @@ export default {
   data() {
     return {
       localMonitoring: [],
+      maintenaceService: new MaintenanceService(),
       monitoringService: new MonitoringService(),
       showChartPopup: false // Controla la visibilidad del popup
     };
@@ -25,6 +27,7 @@ export default {
   async created() {
     try {
       const response = await this.monitoringService.getAll();
+      console.log(response);
       this.localMonitoring = response.data;
       console.log(this.localMonitoring);
     } catch (error) {
