@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import { authenticationGuard} from "../iam/services/authentication.guard.js";
 
-//definir metas comunes
 const defaultMeta = { showToolbar: true };
 
 const routes = [
@@ -47,8 +46,8 @@ const routes = [
         meta: { ...defaultMeta, title: 'Ordering Machinery' }
     },
     {
-        path: '/orden-detail',
-        name: 'orden-detail',
+        path: '/order-detail',
+        name: 'order-detail',
         component: () => import('../planning/pages/order-detail-view.component.vue'),
         meta: { ...defaultMeta, title: 'Order Detail' }
     },
