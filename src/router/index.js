@@ -54,13 +54,13 @@ const routes = [
     },
     {
         path: '/sign-in',
-        name: 'sign-in-view',
+        name: 'sign-in',
         component: () => import('../iam/pages/sign-in-view.component.vue'),
         meta: { title: 'Sign In', showToolbar: false }
     },
     {
         path: '/sign-up',
-        name: 'sign-up-view',
+        name: 'sign-up',
         component: () => import('../iam/pages/sign-up-view.component.vue'),
         meta: { title: 'Sign Up', showToolbar: false }
     },
