@@ -20,10 +20,12 @@ export default {
 </script>
 
 <template>
+
 <section class="container">
   <div class="p-3">
     <div class="maintenance__tittle"><h1 class="maintenance__title__h1">Maintenance Logs</h1></div>
     <p class="mb-4">Track the logs of your machines</p>
+    //TODO: validate the consumption of the endpoint
     <maintenance-management-component :maintenance="localMaintenance" selected-id="1">
 
     </maintenance-management-component>
