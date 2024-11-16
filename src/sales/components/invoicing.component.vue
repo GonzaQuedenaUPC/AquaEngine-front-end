@@ -14,11 +14,11 @@
             <div class="flex flex-col gap-3">
 
               <div class="">
-                <InputText id="customerName" v-model="newInvoice.customerName" placeholder="Customer Name" required  class="w-full"/>
+                <InputText id="customerName" v-model="newInvoice.client" placeholder="Customer Name" required  class="w-full"/>
               </div>
 
               <div class="">
-                <InputText id="productName" v-model="newInvoice.productName" placeholder="Product Name" required class="w-full"/>
+                <InputText id="productName" v-model="newInvoice.product" placeholder="Product Name" required class="w-full"/>
               </div>
 
               <div class="">
@@ -109,8 +109,8 @@ export default {
 
     const invoices = ref([]);
     const newInvoice = ref({
-      customerName: '',
-      productName: '',
+      client: '',
+      product: '',
       quantity: 1,
       price: 0
     });
@@ -123,7 +123,7 @@ export default {
     const addInvoice = () => {
       invoiceService.addInvoice(newInvoice.value);
       toast.add({ severity: 'success', summary: 'Éxito', detail: 'Factura creada', life: 3000 });
-      newInvoice.value = { customerName: '', productName: '', quantity: 1, price: 0 };
+      newInvoice.value = { client: '', product: '', quantity: 1, price: 0 };
       loadInvoices();
       showDialog.value = false;
     };
