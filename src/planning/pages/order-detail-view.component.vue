@@ -5,38 +5,38 @@ export default {
   name: "order-detail-view",
   data() {
     return {
-      items: []
+      items: [],
     };
   },
   methods: {
     handleItemRequested(item) {
+      console.log("Item received in order-detail-view:", item);
       if (item && item.id && item.name && item.units) {
-        console.log('Event received: item-selected', item);
+        console.log("Valid item received, adding to list.");
         this.addItem(item);
-      }
-      else {
-        console.error("Invalid item received: ", item);
+      } else {
+        console.error("Invalid item received:", item);
       }
     },
     addItem(newItem) {
       if (newItem) {
         this.items.push(newItem);
-        console.log('Items after adding:', this.items);
+        console.log("Updated item list:", this.items);
       }
     },
     deleteItem(index) {
       this.items.splice(index, 1);
-      console.log('Items after deletion:', this.items);
-    }
+      console.log("Item removed. List updated:", this.items);
+    },
   },
   created() {
-    console.log('Component Order Details created');
-    EventBus.on('item-selected', this.handleItemRequested);
+    console.log("Created order-detail-view component.");
+    EventBus.on("item-selected", this.handleItemRequested);
   },
   unmounted() {
-    console.log('Component Order Details destroyed');
-    EventBus.off('item-selected', this.handleItemRequested);
-  }
+    console.log("Order-detail-view component destroyed.");
+    EventBus.off("item-selected", this.handleItemRequested);
+  },
 };
 </script>
 
@@ -67,7 +67,6 @@ export default {
       </div>
     </div>
   </div>
-
 </template>
 
 <style scoped>

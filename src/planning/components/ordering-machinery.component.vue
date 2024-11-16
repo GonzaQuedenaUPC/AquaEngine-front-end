@@ -19,7 +19,7 @@ export default {
       const units = this.desiredUnits[item.id] || 0;
       const requestData = {
         ...item,
-        unitsRequested: units,
+        units,
       };
       EventBus.emit("item-selected", requestData);
       this.$emit("item-requested", requestData);
