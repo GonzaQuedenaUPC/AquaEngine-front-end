@@ -1,45 +1,32 @@
 <template>
   <section class="container">
-
     <div class="invoicing-container">
-
       <h1 class="title">Invoice System</h1>
-
       <Button label="New Invoice" icon="pi pi-plus" class="p-button-success p-button-sm -mt-3 mb-3" @click="showDialog = true"/>
-
       <Dialog header="New Invoice" :visible.sync="showDialog" :modal="true" :closable="false">
-
         <div class="form flex flex-col gap-2">
           <form @submit.prevent="addInvoice">
             <div class="flex flex-col gap-3">
-
               <div class="">
-                <InputText id="customerName" v-model="newInvoice.client" placeholder="Customer Name" required  class="w-full"/>
+                <InputText id="customerName" v-model="newInvoice.client" placeholder="Customer Name" required class="w-full"/>
               </div>
-
               <div class="">
                 <InputText id="productName" v-model="newInvoice.product" placeholder="Product Name" required class="w-full"/>
               </div>
-
               <div class="">
                 <InputNumber id="quantity" v-model="newInvoice.quantity" :min="1" placeholder="Quantity" required class="w-full"/>
               </div>
-
               <div class="">
                 <InputNumber id="price" v-model="newInvoice.price" mode="currency" currency="PEN" locale="es-PE" :minFractionDigits="2" placeholder="Unit Price" required class="w-full"/>
               </div>
-
             </div>
           </form>
-
           <div slot="footer" class="flex gap-3">
             <Button label="Cancel" icon="pi pi-times" @click="showDialog = false" />
             <Button label="Create Invoice" icon="pi pi-check" @click="addInvoice" />
           </div>
         </div>
       </Dialog>
-
-
       <div class="p-col-12">
         <DataTable :value="invoices" :paginator="true" :rows="5" responsiveLayout="scroll" class="p-datatable-sm">
           <Column field="id" header="ID"></Column>
@@ -68,10 +55,8 @@
           </Column>
         </DataTable>
       </div>
-
       <ConfirmDialog></ConfirmDialog>
     </div>
-
   </section>
 </template>
 
@@ -116,12 +101,12 @@ export default {
     });
     const showDialog = ref(false);
 
-    const loadInvoices = () => {
-      invoices.value = invoiceService.getInvoices();
+    const loadInvoices = async () => {
+      invoices.value = await invoiceService.getInvoices();
     };
 
-    const addInvoice = () => {
-      invoiceService.addInvoice(newInvoice.value);
+    const addInvoice = async () => {
+      await invoiceService.addInvoice(newInvoice.value);
       toast.add({ severity: 'success', summary: 'Éxito', detail: 'Factura creada', life: 3000 });
       newInvoice.value = { client: '', product: '', quantity: 1, price: 0 };
       loadInvoices();
@@ -133,8 +118,8 @@ export default {
         message: '¿Estás seguro de que quieres eliminar esta factura?',
         header: 'Confirmación',
         icon: 'pi pi-exclamation-triangle',
-        accept: () => {
-          invoiceService.deleteInvoice(invoice.id);
+        accept: async () => {
+          await invoiceService.deleteInvoice(invoice.id);
           toast.add({ severity: 'success', summary: 'Éxito', detail: 'Factura eliminada', life: 3000 });
           loadInvoices();
         }
@@ -167,5 +152,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
