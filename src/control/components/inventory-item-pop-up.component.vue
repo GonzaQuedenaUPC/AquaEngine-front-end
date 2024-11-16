@@ -33,7 +33,7 @@ export default {
     <template #header>
       <div class="-mb-5">
         <h1 class="title mb-0">Product Detail</h1>
-        <p><strong>ID:</strong> {{ product.productId }}</p>
+        <p><strong>ID:</strong> {{ product.id }}</p>
       </div>
     </template>
 
@@ -44,8 +44,8 @@ export default {
       </div>
 
       <div class="flex-column justify-content-center align-content-center">
-        <p><strong>Price:</strong> {{ product.price }}</p>
-        <p><strong>Stock:</strong> {{ product.stock }}</p>
+        <p><strong>Stock:</strong> {{ product.quantity }}</p>
+        <p><strong>Unit Price:</strong> {{ product.unitPrice }}</p>
       </div>
     </div>
 

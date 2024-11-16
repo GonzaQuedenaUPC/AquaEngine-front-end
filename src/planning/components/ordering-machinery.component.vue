@@ -19,7 +19,7 @@ export default {
       const units = this.desiredUnits[item.id] || 0;
       const requestData = {
         ...item,
-        unitsRequested: units,
+        units,
       };
       EventBus.emit("item-selected", requestData);
       this.$emit("item-requested", requestData);
@@ -51,6 +51,7 @@ export default {
                   <input type="number" min="0" class="unit__input" v-model.number="desiredUnits[item.id]" placeholder="Units" />
                   <pv-button label="Request" severity="success" class="request__button" @click="requestItem(item)" />
                 </div>
+                <router-link :to="`/ordering-machinery`"></router-link>
               </template>
             </pv-card>
 

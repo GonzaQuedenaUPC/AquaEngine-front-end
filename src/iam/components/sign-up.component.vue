@@ -46,14 +46,14 @@ export default {
         <div class="p-field mt-5">
           <div class="mb-4">
             <button type="submit" class="w-full bg-black text-white py-2 rounded-lg
-            hover:bg-[#8298E7] focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">Sign In
+            hover:bg-[#8298E7] focus:outline-none focus:ring-2 focus:ring-black focus:ring-opacity-50">Sign Up
             </button>
           </div>
 
           <div class="text-center text-gray-600 text-sm">
             <p>Already have an account?
               <router-link to="/sign-in" class="hover:underline">
-                <span class="font-semibold ">Sign Up</span>
+                <span class="font-semibold ">Sign-In </span>
               </router-link>
             </p>
           </div>
