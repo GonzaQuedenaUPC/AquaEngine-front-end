@@ -7,7 +7,7 @@ export const useInvoiceService = () => {
 
     const getInvoices = async () => {
         try {
-            const response = await http.get('/invoice');
+            const response = await http.get('/invoices');
             invoices.value = response.data.map(invoice => new Invoice(
                 invoice.id,
                 invoice.client,
@@ -28,7 +28,7 @@ export const useInvoiceService = () => {
 
     const addInvoice = async (invoice) => {
         try {
-            const response = await http.post('/invoice', invoice);
+            const response = await http.post('/invoices', invoice);
             const newInvoice = new Invoice(
                 response.data.id,
                 response.data.client,
