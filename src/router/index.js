@@ -47,10 +47,16 @@ const routes = [
         meta: { ...defaultMeta, title: 'Ordering Machinery' }
     },
     {
-        path: '/orden-detail',
-        name: 'orden-detail',
+        path: '/order-detail',
+        name: 'order-detail',
         component: () => import('../planning/pages/order-detail-view.component.vue'),
         meta: { ...defaultMeta, title: 'Order Detail' }
+    },
+    {
+        path: '/final-order',
+        name: 'final-order',
+        component: () =>import('../planning/pages/final-order-view.vue'),
+        meta: { ...defaultMeta, title: 'Final Order' }
     },
     {
         path: '/sign-in',
