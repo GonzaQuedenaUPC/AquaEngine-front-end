@@ -1,10 +1,36 @@
 <script>
-import EventBus from "../../shared/event-bus.js";
+import { cartApiService } from "../services/cart-api.service.js";
 
 export default {
   name: "order-detail-view",
   data() {
     return {
+
+      carts: [],
+      cartApi: new cartApiService(),
+    };
+  },
+  methods: {
+    async deleteCart(cartId) {
+      try {
+        await this.cartApi.deleteCart(cartId);
+        this.carts = this.carts.filter(cart => cart.id !== cartId);
+      } catch (error) {
+        console.error('Failed to delete cart item: ', error);
+      }
+    }
+  },
+  async created() {
+    console.log('Component Order Details created');
+    try {
+      const response = await this.cartApi.getAll();
+      this.carts = response.data;
+      console.log('Items in the order detail:', this.carts);
+    } catch (error) {
+      console.error('Failed to load cart data: ', error);
+    }
+  }
+
       items: [],
     };
   },
@@ -46,6 +72,21 @@ export default {
       <h2>Order Detail</h2>
     </div>
     <div class="flex flex-column justify-content-center">
+
+      <div v-if="carts.length === 0" class="empty-state">
+        <p>There are no items in the order detail.</p>
+      </div>
+      <div v-else>
+        <div v-for="cart in carts" :key="cart.id">
+          <pv-card>
+            <template #content>
+              <div class="flex justify-content-start align-items-center">
+                <img :src="cart.urlToImage" alt="Machine" class="machine__image">
+                <h2>{{ cart.name }}</h2>
+              </div>
+              <div class="justify-content-end">
+                <button @click="deleteCart(cart.id)" class="icon pi-trash"></button>
+
       <div v-if="items.length === 0" class="empty-state">
         <p>There are no items in the order detail.</p>
       </div>
@@ -60,11 +101,21 @@ export default {
               </div>
               <div class="justify-content-end">
                 <button @click="deleteItem(index)" class="icon pi-trash"></button>
+
               </div>
             </template>
           </pv-card>
         </div>
       </div>
+
+      <div>
+        <router-link to="/final-order">
+          <pv-button label="Finish Order"/>
+        </router-link>
+      </div>
+    </div>
+  </div>
+
     </div>
   </div>
 </template>
