@@ -3,10 +3,12 @@ import MonitoringManagementComponent from "../components/monitoring-management.c
 import { MonitoringService } from "../services/monitoring.service.js";
 import MaintenanceChartComponent from "../components/maintenance-chart.component.vue";
 import {MaintenanceService} from "../services/maintenance.service.js";
+import MonitoringForm from "../components/monitoring-form-pop-up.vue";
 
 export default {
   name: "MonitoringView",
   components: {
+    MonitoringForm,
     MonitoringManagementComponent,
     MaintenanceChartComponent
   },
@@ -19,9 +21,9 @@ export default {
   data() {
     return {
       localMonitoring: [],
-      maintenaceService: new MaintenanceService(),
       monitoringService: new MonitoringService(),
-      showChartPopup: false // Controla la visibilidad del popup
+      showChartPopup: false, // Controla la visibilidad del popup
+      showFormPopup: false
     };
   },
   async created() {
@@ -34,12 +36,27 @@ export default {
       console.error("Failed to load monitoring data:", error);
     }
   },
-  methods: {
+  methods:{
     openChartPopup() {
       this.showChartPopup = true;
     },
+    openFormPopup() {
+      this.showFormPopup = true;
+    },
+    emitPopUpFormState() {
+      this.$emit('update:visible', true);
+    },
+    emitData(item) {
+      this._emitPopUpState(item);
+    },
     closeChartPopup() {
       this.showChartPopup = false;
+    },
+    closeFormPopup() {
+      this.showFormPopup = false;
+    },
+    handleMonitoringSubmit(newMonitoring) {
+      console.log("New monitoring data submitted:", newMonitoring);
     }
   }
 };
@@ -54,7 +71,6 @@ export default {
         <monitoring-management-component :monitoring="localMonitoring"></monitoring-management-component>
       </div>
 
-      <!--contenedor para el botón alineado a la derecha -->
       <div class="button-container">
         <button @click="openChartPopup" class="open-chart-button">Show Chart</button>
       </div>
@@ -65,6 +81,18 @@ export default {
         <maintenance-chart-component/>
       </div>
     </div>
+
+
+    <div v-if="showFormPopup" class="modal-overlay" @click="closeFormPopup">
+      <div class="model-content">
+        <monitoring-form :visible="showFormPopup" @update:visible="showFormPopup = $event" @submit-monitoring="handleMonitoringSubmit"></monitoring-form>
+      </div>
+    </div>
+
+    <div class="form__button-container">
+      <button @click="openFormPopup" class="open-chart-button">Add</button>
+    </div>
+
   </div>
 </template>
 
@@ -82,6 +110,11 @@ export default {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
+}
+form__button-container{
+  display: flex;
+  justify-content: flex-start;
+
 }
 
 .open-chart-button {
