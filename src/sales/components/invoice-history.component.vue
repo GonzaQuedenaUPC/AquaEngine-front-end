@@ -3,17 +3,17 @@ import { ref, onMounted } from 'vue';
 import { useInvoiceService } from '../services/Invoice.service.js';
 
 export default {
-
   setup() {
     const invoiceService = useInvoiceService();
     const invoices = ref([]);
 
-    const loadInvoices = () => {
-      invoices.value = invoiceService.getInvoices();
+    const loadInvoices = async () => {
+      invoices.value = await invoiceService.getInvoices();
+      console.log(invoices.value);
     };
 
     const formatCurrency = (value) => {
-      return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value);
+      return new Intl.NumberFormat('es-PE', {style: 'currency', currency: 'PEN'}).format(value);
     };
 
     const formatDate = (value) => {
@@ -33,7 +33,6 @@ export default {
 }
 </script>
 
-
 <template>
   <section class="container">
     <div class=" ">
@@ -41,8 +40,8 @@ export default {
 
       <div class="p-grid">
         <div class="p-col-12">
-            <pv-data-table :value="invoices" :paginator="true"
-                           :rows="10" responsiveLayout="scroll">
+          <pv-data-table :value="invoices" :paginator="true"
+                         :rows="10" responsiveLayout="scroll">
 
             <pv-column field="id" header="ID"/>
             <pv-column field="customerName" header="Client"/>
@@ -73,7 +72,6 @@ export default {
     </div>
   </section>
 </template>
-
 
 <style scoped>
 
