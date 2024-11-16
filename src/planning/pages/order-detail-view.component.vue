@@ -1,13 +1,15 @@
 <script>
 import { cartApiService } from "../services/cart-api.service.js";
+// Si EventBus es realmente parte de tu aplicación, asegúrate de importarlo correctamente
+// import EventBus from "path/to/EventBus";
 
 export default {
   name: "order-detail-view",
   data() {
     return {
-
       carts: [],
       cartApi: new cartApiService(),
+      items: [],
     };
   },
   methods: {
@@ -18,23 +20,7 @@ export default {
       } catch (error) {
         console.error('Failed to delete cart item: ', error);
       }
-    }
-  },
-  async created() {
-    console.log('Component Order Details created');
-    try {
-      const response = await this.cartApi.getAll();
-      this.carts = response.data;
-      console.log('Items in the order detail:', this.carts);
-    } catch (error) {
-      console.error('Failed to load cart data: ', error);
-    }
-  }
-
-      items: [],
-    };
-  },
-  methods: {
+    },
     handleItemRequested(item) {
       console.log("Item received in order-detail-view:", item);
       if (item && item.id && item.name && item.units) {
@@ -55,13 +41,20 @@ export default {
       console.log("Item removed. List updated:", this.items);
     },
   },
-  created() {
-    console.log("Created order-detail-view component.");
-    EventBus.on("item-selected", this.handleItemRequested);
+  async created() {
+    console.log('Component Order Details created');
+    try {
+      const response = await this.cartApi.getAll();
+      this.carts = response.data;
+      console.log('Items in the order detail:', this.carts);
+    } catch (error) {
+      console.error('Failed to load cart data: ', error);
+    }
+    // EventBus.on("item-selected", this.handleItemRequested); // Descomentar si EventBus está disponible
   },
   unmounted() {
     console.log("Order-detail-view component destroyed.");
-    EventBus.off("item-selected", this.handleItemRequested);
+    // EventBus.off("item-selected", this.handleItemRequested); // Descomentar si EventBus está disponible
   },
 };
 </script>
@@ -72,7 +65,6 @@ export default {
       <h2>Order Detail</h2>
     </div>
     <div class="flex flex-column justify-content-center">
-
       <div v-if="carts.length === 0" class="empty-state">
         <p>There are no items in the order detail.</p>
       </div>
@@ -86,6 +78,11 @@ export default {
               </div>
               <div class="justify-content-end">
                 <button @click="deleteCart(cart.id)" class="icon pi-trash"></button>
+              </div>
+            </template>
+          </pv-card>
+        </div>
+      </div>
 
       <div v-if="items.length === 0" class="empty-state">
         <p>There are no items in the order detail.</p>
@@ -101,7 +98,6 @@ export default {
               </div>
               <div class="justify-content-end">
                 <button @click="deleteItem(index)" class="icon pi-trash"></button>
-
               </div>
             </template>
           </pv-card>
@@ -113,9 +109,6 @@ export default {
           <pv-button label="Finish Order"/>
         </router-link>
       </div>
-    </div>
-  </div>
-
     </div>
   </div>
 </template>
