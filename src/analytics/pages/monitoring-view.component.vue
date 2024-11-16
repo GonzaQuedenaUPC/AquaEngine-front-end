@@ -2,7 +2,6 @@
 import MonitoringManagementComponent from "../components/monitoring-management.component.vue";
 import { MonitoringService } from "../services/monitoring.service.js";
 import MaintenanceChartComponent from "../components/maintenance-chart.component.vue";
-import {MaintenanceService} from "../services/maintenance.service.js";
 import MonitoringForm from "../components/monitoring-form-pop-up.vue";
 
 export default {
@@ -22,7 +21,7 @@ export default {
     return {
       localMonitoring: [],
       monitoringService: new MonitoringService(),
-      showChartPopup: false, // Controla la visibilidad del popup
+      showChartPopup: false,
       showFormPopup: false
     };
   },
@@ -42,12 +41,6 @@ export default {
     },
     openFormPopup() {
       this.showFormPopup = true;
-    },
-    emitPopUpFormState() {
-      this.$emit('update:visible', true);
-    },
-    emitData(item) {
-      this._emitPopUpState(item);
     },
     closeChartPopup() {
       this.showChartPopup = false;
@@ -71,9 +64,17 @@ export default {
         <monitoring-management-component :monitoring="localMonitoring"></monitoring-management-component>
       </div>
 
-      <div class="button-container">
-        <button @click="openChartPopup" class="open-chart-button">Show Chart</button>
+      <div class="button__container">
+          <div class="button-container">
+            <button @click="openChartPopup" class="open-chart-button">Show Chart</button>
+          </div>
+          <div class="form__button-container">
+            <button @click="openFormPopup" class="open-form-button">Add monitored machine</button>
+          </div>
+
       </div>
+
+
     </div>
 
     <div v-if="showChartPopup" class="modal-overlay" @click.self="closeChartPopup">
@@ -89,9 +90,6 @@ export default {
       </div>
     </div>
 
-    <div class="form__button-container">
-      <button @click="openFormPopup" class="open-chart-button">Add</button>
-    </div>
 
   </div>
 </template>
@@ -105,16 +103,9 @@ export default {
   margin-top: 10px;
   margin-bottom: 25px;
 }
-
-.button-container {
+.button__container{
   display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
-}
-form__button-container{
-  display: flex;
-  justify-content: flex-start;
-
+  justify-content: space-between;
 }
 
 .open-chart-button {
@@ -124,50 +115,13 @@ form__button-container{
   border: none;
   cursor: pointer;
 }
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 80%;
-  max-width: 600px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-</style>
-
-
-<style scoped>
-.container {
-  padding: 20px;
-}
-
-.monitoring__info {
-  margin-top: 10px;
-  margin-bottom: 25px;
-}
-
-.open-chart-button {
+.open-form-button {
   background-color: #4CAF50;
   color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
 }
-
 .modal-overlay {
   position: fixed;
   top: 0;
