@@ -1,3 +1,81 @@
+<script>
+import { ref, onMounted } from 'vue';
+import { useInvoiceService } from '../services/Invoice.service.js';
+import { useToast } from 'primevue/usetoast';
+import { useConfirm } from 'primevue/useconfirm';
+import Card from 'primevue/card';
+import InputText from 'primevue/inputtext';
+import InputNumber from 'primevue/inputnumber';
+import Button from 'primevue/button';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import ConfirmDialog from 'primevue/confirmdialog';
+import Toast from 'primevue/toast';
+import Dialog from 'primevue/dialog';
+
+export default {
+  components: {
+    Card,
+    InputText,
+    InputNumber,
+    Button,
+    DataTable,
+    Column,
+    ConfirmDialog,
+    Toast,
+    Dialog
+  },
+  setup() {
+    const invoiceService = useInvoiceService();
+    const toast = useToast();
+    const confirm = useConfirm();
+
+    const invoices = ref([]);
+    const newInvoice = ref({
+      client: '',
+      product: '',
+      quantity: 1,
+      price: 0
+    });
+    const showDialog = ref(false);
+
+    const loadInvoices = async () => {
+      invoices.value = await invoiceService.getInvoices();
+    };
+
+    const addInvoice = async () => {
+      await invoiceService.addInvoice(newInvoice.value);
+      toast.add({ severity: 'success', summary: 'Éxito', detail: 'Factura creada', life: 3000 });
+      newInvoice.value = { client: '#', product: '#', quantity: 1, price: 1 };
+      loadInvoices();
+      showDialog.value = false;
+
+    };
+
+
+    const formatCurrency = (value) => {
+      return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value);
+    };
+
+    const formatDate = (value) => {
+      return new Date(value).toLocaleDateString('es-PE');
+    };
+
+    onMounted(() => {
+      loadInvoices();
+    });
+
+    return {
+      invoices,
+      newInvoice,
+      addInvoice,
+      formatCurrency,
+      formatDate,
+      showDialog
+    };
+  }
+}
+</script>
 <template>
   <section class="container">
     <div class="invoicing-container">
@@ -60,96 +138,7 @@
   </section>
 </template>
 
-<script>
-import { ref, onMounted } from 'vue';
-import { useInvoiceService } from '../services/Invoice.service.js';
-import { useToast } from 'primevue/usetoast';
-import { useConfirm } from 'primevue/useconfirm';
-import Card from 'primevue/card';
-import InputText from 'primevue/inputtext';
-import InputNumber from 'primevue/inputnumber';
-import Button from 'primevue/button';
-import DataTable from 'primevue/datatable';
-import Column from 'primevue/column';
-import ConfirmDialog from 'primevue/confirmdialog';
-import Toast from 'primevue/toast';
-import Dialog from 'primevue/dialog';
 
-export default {
-  components: {
-    Card,
-    InputText,
-    InputNumber,
-    Button,
-    DataTable,
-    Column,
-    ConfirmDialog,
-    Toast,
-    Dialog
-  },
-  setup() {
-    const invoiceService = useInvoiceService();
-    const toast = useToast();
-    const confirm = useConfirm();
-
-    const invoices = ref([]);
-    const newInvoice = ref({
-      client: '',
-      product: '',
-      quantity: 1,
-      price: 0
-    });
-    const showDialog = ref(false);
-
-    const loadInvoices = async () => {
-      invoices.value = await invoiceService.getInvoices();
-    };
-
-    const addInvoice = async () => {
-      await invoiceService.addInvoice(newInvoice.value);
-      toast.add({ severity: 'success', summary: 'Éxito', detail: 'Factura creada', life: 3000 });
-      newInvoice.value = { client: '', product: '', quantity: 1, price: 0 };
-      loadInvoices();
-      showDialog.value = false;
-    };
-
-    const confirmDeleteInvoice = (invoice) => {
-      confirm.require({
-        message: '¿Estás seguro de que quieres eliminar esta factura?',
-        header: 'Confirmación',
-        icon: 'pi pi-exclamation-triangle',
-        accept: async () => {
-          await invoiceService.deleteInvoice(invoice.id);
-          toast.add({ severity: 'success', summary: 'Éxito', detail: 'Factura eliminada', life: 3000 });
-          loadInvoices();
-        }
-      });
-    };
-
-    const formatCurrency = (value) => {
-      return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(value);
-    };
-
-    const formatDate = (value) => {
-      return new Date(value).toLocaleDateString('es-PE');
-    };
-
-    onMounted(() => {
-      loadInvoices();
-    });
-
-    return {
-      invoices,
-      newInvoice,
-      addInvoice,
-      confirmDeleteInvoice,
-      formatCurrency,
-      formatDate,
-      showDialog
-    };
-  }
-}
-</script>
 
 <style scoped>
 </style>

@@ -16,7 +16,10 @@ export const useInvoiceService = () => {
                 invoice.price,
                 invoice.date
             ));
+            let test =invoices.value;
+            console.log(test);
             return invoices.value;
+
         } catch (error) {
             console.error('Error fetching invoices:', error);
             throw error;
@@ -37,16 +40,17 @@ export const useInvoiceService = () => {
             invoices.value.push(newInvoice);
             return newInvoice;
         } catch (error) {
-            console.error('Error adding invoice:', error);
+            if (error.response && error.response.status === 400) {
+                console.error('Bad Request: Invalid invoice data', error.response.data);
+            } else {
+                console.error('Error adding invoice:', error);
+            }
             throw error;
         }
     };
 
-
-
     return {
         getInvoices,
         addInvoice,
-
     };
 };
