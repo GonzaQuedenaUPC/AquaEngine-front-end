@@ -52,7 +52,7 @@ export default {
   </div>
 
   <div class="form__button-container">
-    <button @click="openFormPopup" class="open-form-button">Add Maintenance</button>
+    <button style="color: white" @click="openFormPopup" class="open-form-button">Add Maintenance</button>
   </div>
 </template>
 
@@ -64,10 +64,14 @@ export default {
   z-index: 1;
 }
 .open-form-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
+  background-color:#8298E7;
+  color: #000;
   border: none;
-  cursor: pointer;
+  min-width: 140px;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 4px;
+
+
 }
 </style>

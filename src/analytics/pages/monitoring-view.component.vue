@@ -68,8 +68,9 @@ export default {
           <div class="button-container">
             <button @click="openChartPopup" class="open-chart-button">Show Chart</button>
           </div>
-          <div class="form__button-container">
-            <button @click="openFormPopup" class="open-form-button">Add monitored machine</button>
+
+          <div class="insert__button__container">
+            <button @click="openFormPopup" class="open-form-button">Insert</button>
           </div>
 
       </div>
@@ -99,6 +100,7 @@ export default {
   padding: 20px;
 }
 
+
 .monitoring__info {
   margin-top: 10px;
   margin-bottom: 25px;
@@ -116,11 +118,14 @@ export default {
   cursor: pointer;
 }
 .open-form-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
+  background-color:#8298E7;
+  color: #000;
   border: none;
-  cursor: pointer;
+  min-width: 140px;
+  height: 40px;
+  margin-top: 20px;
+  border-radius: 4px;
+
 }
 .modal-overlay {
   position: fixed;
