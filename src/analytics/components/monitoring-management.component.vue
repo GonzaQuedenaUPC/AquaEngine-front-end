@@ -19,6 +19,7 @@ export default {
             ID: {{ item.id }}
           </template>
           <template #content>
+            <img :src="item.urlToImage" alt="Machine Image" class="machine__image"/>
             <p><strong>Name:</strong> {{ item.name }}</p>
             <p><strong>Status:</strong> {{ item.status }}</p>
           </template>
@@ -38,6 +39,11 @@ export default {
   max-height: 400px;
   overflow-y: auto;
   padding: 10px;
+}
+.machine__image{
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
 }
 
 /*estilos para el scrollbar */

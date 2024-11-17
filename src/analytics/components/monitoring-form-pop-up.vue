@@ -11,7 +11,7 @@ export default {
   },
   data() {
     return {
-      userId: 0,
+      userId: 1,
       name: "",
       urlToImage: "",
       status: "",
@@ -26,7 +26,7 @@ export default {
       this.emitPopUpFormState();
     },
     resetFields() {
-      this.userId = 0;
+      this.userId = 1;
       this.name = "";
       this.urlToImage = "";
       this.status = "";
@@ -58,35 +58,34 @@ export default {
     <template #header>
       <!-- Add header content if needed -->
     </template>
+    <h1 class="font-bold" style="font-size: 30px">New Monitored Machine</h1>
     <form @submit.prevent="handleSubmit" class="flex flex-col space-y-4">
+
       <div class="p-4">
-        <div class="flex space-x-4">
-          <div class="flex-1">
-            <label for="userId" class="block text-sm font-medium text-gray-700">User ID</label>
-            <input v-model="userId" type="number" name="userId" id="userId"
-                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-          </div>
+
+        <div class="flex flex-col space-y-4">
+
 
           <div class="flex-1">
             <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
             <input v-model="name" type="text" name="name" id="name"
-                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                   class="w-full border rounded p-2">
           </div>
 
           <div class="flex-1">
             <label for="urlToImage" class="block text-sm font-medium text-gray-700">URL to Image</label>
             <input v-model="urlToImage" type="text" name="urlToImage" id="urlToImage"
-                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                   class="w-full border rounded p-2">
           </div>
 
           <div class="flex-1">
             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
             <input v-model="status" type="text" name="status" id="status"
-                   class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                   class="w-full border rounded p-2">
           </div>
         </div>
         <div class="flex justify-between mt-4">
-          <pv-button label="Register monitored machine"
+          <pv-button label="Register"
                      style="background-color: #8298E7; color: #000; border: none; min-width: 120px; height: 40px"
                      type="submit"/>
           <pv-button label="Close" severity="danger" @click="closeDialog"/>
