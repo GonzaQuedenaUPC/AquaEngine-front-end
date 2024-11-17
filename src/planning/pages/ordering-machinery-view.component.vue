@@ -1,6 +1,6 @@
 <script>
 import OrderingMachineryComponent from "../components/ordering-machinery.component.vue";
-import { OrderingMachineryService } from "../services/ordering-machinery.service.js";
+import {OrderingMachineryService} from "../services/ordering-machinery.service.js";
 import {cartApiService} from "../services/cart-api.service.js";
 
 export default {
@@ -35,9 +35,9 @@ export default {
     async handleItemRequested(item) {
       this.selectedItem = item;
       console.log("Emitting event: item-selected", this.selectedItem);
-      try{
+      try {
         await this.cartService.createCart({
-        name: this.selectedItem.name, urlToImage: this.selectedItem.urlToImage,
+          name: this.selectedItem.name, urlToImage: this.selectedItem.urlToImage,
         });
       } catch (error) {
         console.error("Failed to create cart item: ", error);
@@ -61,7 +61,7 @@ export default {
       <p class="ordering-machinery__info -mt-4 mb-3">
         Access the ordering system to request and track machinery.
       </p>
-      <ordering-machinery-component :ordering="localMonitoring" @item-requested="handleItemRequested" />
+      <ordering-machinery-component :ordering="localMonitoring" @item-requested="handleItemRequested"/>
     </div>
   </section>
 </template>
