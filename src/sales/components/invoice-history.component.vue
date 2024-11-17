@@ -44,8 +44,8 @@ export default {
                          :rows="10" responsiveLayout="scroll">
 
             <pv-column field="id" header="ID"/>
-            <pv-column field="customerName" header="Client"/>
-            <pv-column field="productName" header="Product"/>
+            <pv-column field="client" header="Client"/>
+            <pv-column field="product" header="Product"/>
             <pv-column field="quantity" header="Quantity"/>
 
             <pv-column field="price" header="Price">

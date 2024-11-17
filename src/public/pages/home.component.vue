@@ -112,7 +112,7 @@ export default {
             <template #content>
               <div class="feature__content">
                 <img src="../../assets/images/history.svg" alt="history-icon" class="feature__icon" />
-                <span>Historial de Facturas</span>
+                <span>Invoice History</span>
               </div>
             </template>
           </pv-card>
