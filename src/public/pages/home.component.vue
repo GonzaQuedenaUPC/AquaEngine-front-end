@@ -107,16 +107,6 @@ export default {
           </pv-card>
         </router-link>
 
-        <router-link to="/invoice-history" class="feature__item">
-          <pv-card class="feature__card">
-            <template #content>
-              <div class="feature__content">
-                <img src="../../assets/images/history.svg" alt="history-icon" class="feature__icon" />
-                <span>Invoice History</span>
-              </div>
-            </template>
-          </pv-card>
-        </router-link>
 
       </div>
     </div>
